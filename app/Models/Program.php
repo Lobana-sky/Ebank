@@ -15,13 +15,14 @@ class Program extends Model
         'image',
         'price',
         'note',
+        'status',
     ];
     
     /**
      * Get the user that owns the turkification.
      */
-    public function user(): BelongsToMany
+    public function users(): BelongsToMany
     {
-        return $this->BelongsToMany(User::class);
+        return $this->belongsToMany(User::class);
     }
 }

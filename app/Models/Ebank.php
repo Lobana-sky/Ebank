@@ -10,18 +10,23 @@ class Ebank extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'ebank_id',
+        'section_id',
         'name',
         'image',
         'note',
         'price',
+        'status',
     ];
     
     /**
      * Get the user that owns the turkification.
      */
-    public function user(): BelongsToMany
+    public function users(): BelongsToMany
     {
-        return $this->BelongsToMany(User::class);
+        return $this->belongsToMany(user::class);
+    }
+    public function ebankSection(): BelongsTo
+    {
+        return $this->belongsTo(ebankSection::class);
     }
 }

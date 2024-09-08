@@ -2,31 +2,25 @@
 
 namespace App\Models;
 
+
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Ecard extends Model
+class DataCommunication extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'section_id',
         'name',
         'image',
         'price',
         'note',
         'status',
+        'type',//فاتورة   1 :   ---   -2:رصيد
     ];
-    
-    /**
-     * Get the user that owns the turkification.
-     */
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class);
-    }
-    public function ecardSections(): BelongsTo
-    {
-        return $this->belongsToMany(EcardSection::class);
     }
 }

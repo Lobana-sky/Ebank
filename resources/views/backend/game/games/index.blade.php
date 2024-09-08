@@ -20,7 +20,7 @@
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="d-flex flex-row-reverse">
                         <div class="page_action">
-                            <a href="javascript:void(0);" data-toggle="modal" class="btn btn-primary" data-target="#createmodal" ><i class="fa fa-add">أضف قسم جديد</i></a>
+                            <a href="javascript:void(0);" data-toggle="modal" class="btn btn-primary" data-target="#createmodal" ><i class="fa fa-add">أضف لعبة جديد</i></a>
                         </div>
                         <div class="p-2 d-flex">
                         </div>
@@ -40,9 +40,11 @@
                                         <tr>                                            
                                             <th>اسم  اللعبة</th>
                                             <th> الصورة </th>
-                                            <th> القسم </th>
+                                            <th> التصنيف </th>
                                             <th>السعر</th>
                                             <th>العمليات</th>
+                                            
+                                            <th>الحالة</th>
                                         </tr>
                                     </thead>
                                     
@@ -60,8 +62,8 @@
                                             </td>
                                             <td class="project-title">
                                                 <h6>  
-                                                    @foreach ($games_sections as $key => $section)
-                                                      @if( $game->game_id==$section->id)
+                                                    @foreach ($gameSections as $key => $section)
+                                                      @if( $game->section_id==$section->id)
                                                          {{$section->name}}
                                                          @break
                                                     
@@ -72,9 +74,16 @@
                                             </td>
                                             <td class="project-actions">
                                                 <a href="#defaultModal" data-toggle="modal" data-target="#defaultModal">
-                                                <a href="javascript:void(0);" class="btn btn-sm btn-outline-primary"><i class="icon-eye"></i></a>
                                                 <a href="javascript:void(0);" data-toggle="modal" data-target="#editModal{{$game->id}}" class="btn btn-sm btn-outline-success"><i class="icon-pencil"></i></a>
                                                 <a  href="javascript:void(0);" data-toggle="modal" data-target="#deleteModal{{$game->id}}" class="btn btn-sm btn-outline-danger" ><i class="icon-trash"></i></a>
+                                            </td>
+                                            <td>
+                                            @if($game->status)
+                                            <a href="javascript:void(0);" data-toggle="modal" class="btn btn-primary" data-target="#enableModal{{$game->id}}"style="background-color:#22a191" ><i class="fa fa-add" >ايقاف </i></a>
+                                                @else
+                                            <a href="javascript:void(0);" data-toggle="modal" class="btn btn-primary" data-target="#enableModal{{$game->id}}" style="background-color:#23b5a7a1"><i class="fa fa-add" >  تفعيل </i></a>
+
+                                                @endif
                                             </td>
                                         </tr>
                                         @endforeach
@@ -103,9 +112,9 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <select class="custom-select" required name="game_id" >
-                           <option value="" selected>اختر القسم</option>
-                           @foreach ($games_sections as $key => $section)
+                        <select class="custom-select" required name="section_id" >
+                           <option value="" selected>اختر التصنيف</option>
+                           @foreach ($gameSections as $key => $section)
                            <option value="{{$section->id}}" >{{$section->name}}</option>
 
                            @endforeach
@@ -137,13 +146,9 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">الصورة</span>
                         </div>
-                        <div class="input-group mb-3">
-                    </div>
-                    
-                    <div class="input-group mb-3">
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" name="image">
-                            <label class="custom-file-label" for="inputGroupFile01">اختر الصورة</label>
+                            <label class="custom-file-label" for="inputGroupFile01">اختر الصورة </label>
                         </div>
                     </div>
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
@@ -198,10 +203,10 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <select class="custom-select" required name="game_id" >
+                        <select class="custom-select" required name="section_id" >
                  
-                               @foreach ($games_sections as $key => $section)
-                                   @if( $game->game_id==$section->id)
+                               @foreach ($gameSections as $key => $section)
+                                   @if( $game->section_id==$section->id)
                                 <option value="{{$section->id}}" selected>{{$section->name}}</option>
                                     @else
                                 <option value="{{$section->id}}" >{{$section->name}}</option>
@@ -255,5 +260,31 @@
 </div>
 @endforeach
 
-
+<!--------------enable -------------->
+@foreach ($games as $key => $game)
+<div class="modal fade" id="enableModal{{$game->id}}" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                @if($game->status)
+                <h4 class="title" id="defaultModalLabeldelete">هل أنت بالتاكيد تريد الغاء تفعيل الخدمة ؟ </h4>
+                @else
+                
+                <h4 class="title" id="defaultModalLabeldelete">هل أنت بالتاكيد تريد تفعيل الخدمة؟  </h4>
+                @endif
+            </div>
+            <div class="modal-body"> 
+              <form action="/game/{{$game->id}}/status" method="POST">
+               @csrf
+               <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+               <div class="modal-footer">
+                   <button type="submit" class="btn btn-primary">نعم</button>
+                   <a href="#" class="btn btn-secondary" data-dismiss="modal">الغاء الأمر</a>
+               </div>
+              </form>
+           </div>
+        </div>
+    </div>
+</div>
+@endforeach
 @endsection

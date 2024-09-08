@@ -11,5 +11,10 @@ class EcardSection extends Model
     protected $fillable = [
         'name',
         'image',
+        'status',
     ];
+    public function ecards(): BelongsToMany
+    {
+        return $this->belongsToMany(Ecard::class);
+    }
 }

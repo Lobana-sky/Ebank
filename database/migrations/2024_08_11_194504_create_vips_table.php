@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('role_name');
             $table->integer('commession_percent');
+            
             $table->timestamps();
         });
     }

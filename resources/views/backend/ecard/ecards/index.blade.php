@@ -14,13 +14,13 @@
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html"><i class="fa fa-dashboard"></i></a></li>                            
                         <li class="breadcrumb-item">لوحة التحكم</li>
-                        <li class="breadcrumb-item active"> البطاقات الرقمية</li>
+                        <li class="breadcrumb-item active"> البطاقات الرقمية </li>
                     </ul>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="d-flex flex-row-reverse">
                         <div class="page_action">
-                            <a href="javascript:void(0);" data-toggle="modal" class="btn btn-primary" data-target="#createmodal" ><i class="fa fa-add">أضف قسم جديد</i></a>
+                            <a href="javascript:void(0);" data-toggle="modal" class="btn btn-primary" data-target="#createmodal" ><i class="fa fa-add">أضف بطاقة جديد</i></a>
                         </div>
                         <div class="p-2 d-flex">
                         </div>
@@ -31,18 +31,19 @@
                 <div class="col-lg-12 col-md-12">
                     <div class="card">
                         <div class="header">
-                            <h2>الالعاب</h2>
+                            <h2>البطاقات الرقمية</h2>
                         </div>
                         <div class="body project_report">
                             <div class="table-responsive">
                                 <table class="table table-hover js-basic-example dataTable table-custom mb-0">
                                     <thead>
                                         <tr>                                            
-                                            <th>اسم  البنك</th>
+                                            <th>اسم  البطاقة</th>
                                             <th> الصورة </th>
-                                            <th> القسم </th>
+                                            <th> التصنيف </th>
                                             <th>السعر</th>
                                             <th>العمليات</th>
+                                            <th>الحالة</th>
                                         </tr>
                                     </thead>
                                     
@@ -56,12 +57,12 @@
 
                                             <td><img src="{{asset('assets/images/ecard/'.$ecard->image)}}" data-toggle="tooltip" data-placement="top" title="Team Lead" alt="Avatar" class="width35 rounded"></td>
                                             <td class="project-title">
-                                                <h6>{{$data->name}}</h6>
+                                                <h6>{{$ecard->price}}</h6>
                                             </td>
                                             <td class="project-title">
                                                 <h6>  
                                                     @foreach ($ecardSections as $key => $section)
-                                                      @if( $ecard->ecard_id==$section->id)
+                                                      @if( $ecard->section_id==$section->id)
                                                          {{$section->name}}
                                                          @break
                                                     
@@ -72,9 +73,16 @@
                                             </td>
                                             <td class="project-actions">
                                                 <a href="#defaultModal" data-toggle="modal" data-target="#defaultModal">
-                                                <a href="javascript:void(0);" class="btn btn-sm btn-outline-primary"><i class="icon-eye"></i></a>
                                                 <a href="javascript:void(0);" data-toggle="modal" data-target="#editModal{{$ecard->id}}" class="btn btn-sm btn-outline-success"><i class="icon-pencil"></i></a>
                                                 <a  href="javascript:void(0);" data-toggle="modal" data-target="#deleteModal{{$ecard->id}}" class="btn btn-sm btn-outline-danger" ><i class="icon-trash"></i></a>
+                                            </td>
+                                            <td>
+                                            @if($ecard->status)
+                                            <a href="javascript:void(0);" data-toggle="modal" class="btn btn-primary" data-target="#enableModal{{$ecard->id}}"style="background-color:#22a191" ><i class="fa fa-add" >ايقاف </i></a>
+                                                @else
+                                            <a href="javascript:void(0);" data-toggle="modal" class="btn btn-primary" data-target="#enableModal{{$ecard->id}}" style="background-color:#23b5a7a1"><i class="fa fa-add" >  تفعيل </i></a>
+
+                                                @endif
                                             </td>
                                         </tr>
                                         @endforeach
@@ -94,7 +102,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="title" >إضافة  لعبة  جديد</h4>
+                <h4 class="title" >إضافة  بطاقة  جديد</h4>
             </div>
             <div class="modal-body"> 
                 <form method="Post" action="{{ route('ecard.store') }}" enctype="multipart/form-data">
@@ -102,9 +110,9 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <select class="custom-select" required name="ecard_id" >
-                            <option value="" selected>اختر القسم</option>
-                            @foreach ($ecardsSections as $key => $section)
+                        <select class="custom-select" required name="section_id" >
+                            <option value="" selected>اختر التصنيف</option>
+                            @foreach ($ecardSections as $key => $section)
                             <option value="{{$section->id}}" >{{$section->name}}</option>
     
                             @endforeach
@@ -182,7 +190,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="title" >تعديل معلومات اللعبة </h4>
+                <h4 class="title" >تعديل معلومات البطاقة </h4>
             </div>
             <div class="modal-body"> 
                 <form method="POST" action="{{ route('ecard.update', $ecard->id) }}" enctype="multipart/form-data">
@@ -194,9 +202,9 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <select class="custom-select" required name="ecard_id" >
-                            @foreach ($ecardsSections as $key => $section)
-                                @if( $ecard->ecard_id==$section->id)
+                        <select class="custom-select" required name="section_id" >
+                            @foreach ($ecardSections as $key => $section)
+                                @if( $ecard->section_id==$section->id)
                             <option value="{{$section->id}}" selected>{{$section->name}}</option>
                                 @else
                             <option value="{{$section->id}}" >{{$section->name}}</option>
@@ -251,4 +259,31 @@
 @endforeach
 
 
+<!--------------enable -------------->
+@foreach ($ecards as $key => $ecard)
+<div class="modal fade" id="enableModal{{$ecard->id}}" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                @if($ecard->status)
+                <h4 class="title" id="defaultModalLabeldelete">هل أنت بالتاكيد تريد الغاء تفعيل الخدمة ؟ </h4>
+                @else
+                
+                <h4 class="title" id="defaultModalLabeldelete">هل أنت بالتاكيد تريد تفعيل الخدمة؟  </h4>
+                @endif
+            </div>
+            <div class="modal-body"> 
+              <form action="/ecard/{{$ecard->id}}/status" method="POST">
+               @csrf
+               <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+               <div class="modal-footer">
+                   <button type="submit" class="btn btn-primary">نعم</button>
+                   <a href="#" class="btn btn-secondary" data-dismiss="modal">الغاء الأمر</a>
+               </div>
+              </form>
+           </div>
+        </div>
+    </div>
+</div>
+@endforeach
 @endsection

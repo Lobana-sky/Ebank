@@ -19,12 +19,13 @@ class AppSection extends Model
     protected $fillable = [
         'name',
         'image',
+        'status',
     ];
     
     public function Apps(): BelongsToMany
     {
         return $this->belongsToMany(App::class);
     }
-
+ 
 
 }

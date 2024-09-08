@@ -18,15 +18,17 @@ class EbankSection extends Model
      protected $fillable = [
         'name',
         'image',
+        'status',
       
     ];
 
       /**
      * Get the user that owns the turkification.
      */
-    public function ebanks(): BelongsTo
+    public function ebanks(): BelongsToMany
     {
-        return $this->belongsTo(ebank::class);
+        return $this->belongsTo(ebanks::class);
     }
+    
 }
  

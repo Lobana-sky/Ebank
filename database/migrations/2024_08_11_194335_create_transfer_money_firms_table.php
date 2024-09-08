@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('iban');
             $table->string('account_name');
-            $table->string('image');
+            $table->string('image')->nullable();
+            $table->tinyInteger('status')->default('1');
             $table->timestamps();
         });
     }

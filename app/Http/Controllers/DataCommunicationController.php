@@ -1,67 +1,66 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
-use App\Models\AppSection;
+use App\Models\DataCommunication;
 use Illuminate\Support\Facades\DB;
 
-class AppSectionContoller extends Controller
+class DataCommunicationController extends Controller
 {
+    
     public function index()
-    {
-       $apps=DB::table('app_sections')->select('*')->orderBy('id', 'desc')->paginate(500);
-       return view('backend.app.appSections.index', compact('apps'));
+    { 
+        $datas=DB::table('data_communications')->select('*')->orderBy('id', 'desc')->paginate(500);
+        return view('backend.data.datas.index', compact('datas'));
     }
 
     public function store(Request $request)
     {
         $input = $request->all();
-
-        $input = $request->all();
+      
         if($request->file('image')!="")
         {
-        if ($file = $request->file('image')) {
-            $name = 'app'.time().$file->getClientOriginalName();
-            $file->move('assets/images/appSections/', $name);
-            $input['image'] = $name;
-            }
+            if ($file = $request->file('image')) {
+                $name = 'data'.time().$file->getClientOriginalName();
+                $file->move('assets/images/data/', $name);
+                $input['image'] = $name;
+            } 
         }
         else
         {
-            $input['image'] ="";
+           $input['image'] ="";
         }
-        AppSection::create($input);
+         
+        DataCommunication::create($input);
         return back()->with('message', 'تمت الاضافة بنجاح');
- 
     }
 
     public function update(Request $request, string $id)
     {
-        $app = AppSection::findOrFail($id);
+        $data = DataCommunication::findOrFail($id);
         $input = $request->all();
-        
+       
         if($request->file('image')!="")
         {
             if ($file = $request->file('image')) {
-                $name = 'app_'.time().$file->getClientOriginalName();
-                $file->move('images/appSection/', $name);
+                $name = 'data'.time().$file->getClientOriginalName();
+                $file->move('assets/images/data/', $name);
                 $input['image'] = $name;
-            }
-       }
-       else
-       {
-            $input['image'] =$app['image'];
-       }
-        $app->update($input);
+            } 
+        }
+        else
+        {
+            $input['image'] =$data['image'];
+        }
+        $data->update($input);
        
         return back()->with('message', 'تم التعديل بنجاح');
-
     }
-
     public function changeStatus(string $id)
     {
 
-        $myservice= AppSection::findOrFail($id);
+        $myservice= DataCommunication::findOrFail($id);
        
         if($myservice->status)
          { $myservice->status=0;
@@ -76,8 +75,8 @@ class AppSectionContoller extends Controller
     }
     public function destroy(string $id)
     {
-        $app = AppSection::findOrFail($id);
-        $app->delete();
+        $data= DataCommunication::findOrFail($id);
+        $data->delete();
         return back()->with('message', 'تم الحذف  بنجاح');
     }
 }

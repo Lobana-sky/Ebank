@@ -25,8 +25,8 @@ class Vip extends Model
     /**
      * Get the user that owns the vip.
      */
-    public function user(): BelongsTo
+    public function users(): BelongsToMany
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsToMany(User::class);
     }
 }

@@ -19,9 +19,7 @@
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="d-flex flex-row-reverse">
-                        <div class="page_action">
-                            <a href="javascript:void(0);" data-toggle="modal" class="btn btn-primary" data-target="#createmodal" ><i class="fa fa-add">أضف طلب شركة جديد</i></a>
-                        </div>
+                     
                         <div class="p-2 d-flex">
                         </div>
                     </div>
@@ -31,7 +29,7 @@
                 <div class="col-lg-12 col-md-12">
                     <div class="card">
                         <div class="header">
-                            <h2>الالعاب</h2>
+                            <h2>البيانات ولاتصالات</h2>
                         </div>
                         <div class="body project_report">
                             <div class="table-responsive">
@@ -62,7 +60,6 @@
                                             <td>{{$dataOrder->mobile}}</td>
                                             <td class="project-actions">
                                                 <a href="#defaultModal" data-toggle="modal" data-target="#defaultModal">
-                                                <a href="javascript:void(0);" class="btn btn-sm btn-outline-primary"><i class="icon-eye"></i></a>
                                                 <a href="javascript:void(0);" data-toggle="modal" data-target="#editModal{{$dataOrder->id}}" class="btn btn-sm btn-outline-success"><i class="icon-pencil"></i></a>
                                                 <a href="javascript:void(0);" data-toggle="modal" data-target="#deleteModal{{$dataOrder->id}}" class="btn btn-sm btn-outline-danger" ><i class="icon-trash"></i></a>
                                             </td>

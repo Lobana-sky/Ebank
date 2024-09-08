@@ -14,14 +14,12 @@
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html"><i class="fa fa-dashboard"></i></a></li>                            
                         <li class="breadcrumb-item">لوحة التحكم</li>
-                        <li class="breadcrumb-item active">  تفعيل البرامج</li>
+                        <li class="breadcrumb-item active"> طلبات  تفعيل البرامج</li>
                     </ul>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="d-flex flex-row-reverse">
-                        <div class="page_action">
-                            <a href="javascript:void(0);" data-toggle="modal" class="btn btn-primary" data-target="#createmodal" ><i class="fa fa-add">أضف برنامج جديد</i></a>
-                        </div>
+                    
                         <div class="p-2 d-flex">
                         </div>
                     </div>
@@ -58,8 +56,7 @@
                                             <td>{{$programOrder->note}}</td>
                                             <td class="project-actions">
                                                 <a href="#defaultModal" data-toggle="modal" data-target="#defaultModal">
-                                                <a href="javascript:void(0);" class="btn btn-sm btn-outline-primary"><i class="icon-eye"></i></a>
-                                                <a href="javascript:void(0);" data-toggle="modal" data-target="#editModal{{$programOrder->id}}" class="btn btn-sm btn-outline-success"><i class="icon-pencil"></i></a>
+                                                   <a href="javascript:void(0);" data-toggle="modal" data-target="#editModal{{$programOrder->id}}" class="btn btn-sm btn-outline-success"><i class="icon-pencil"></i></a>
                                                 <a href="javascript:void(0);" data-toggle="modal" data-target="#deleteModal{{$programOrder->id}}" class="btn btn-sm btn-outline-danger" ><i class="icon-trash"></i></a>
                                             </td>
                                         </tr>
@@ -80,7 +77,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="title" >إضافة  برنامج  جديد</h4>
+                <h4 class="title" >إضافة  طلب  جديد</h4>
             </div>
             <div class="modal-body"> 
                 <form method="Post" action="{{ route('program-order.store') }}" enctype="multipart/form-data">
@@ -159,7 +156,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="title" >تعديل معلومات البرنامج </h4>
+                <h4 class="title" >تعديل معلومات الطلب </h4>
             </div>
             <div class="modal-body"> 
                 <form method="POST" action="{{ route('program-order.update', $programOrder->id) }}" enctype="multipart/form-data">

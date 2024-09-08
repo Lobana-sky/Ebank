@@ -19,9 +19,7 @@
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="d-flex flex-row-reverse">
-                        <div class="page_action">
-                            <a href="javascript:void(0);" data-toggle="modal" class="btn btn-primary" data-target="#createmodal" ><i class="fa fa-add">أضف طلب جديد</i></a>
-                        </div>
+                 
                         <div class="p-2 d-flex">
                         </div>
                     </div>

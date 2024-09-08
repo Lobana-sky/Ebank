@@ -44,7 +44,7 @@ class UserController extends Controller
     {
     }
 
-    public function show_category($id)
+    public function showCategory($id)
     {
         $users=DB::table('users')->select('*')->where('role',$id)->orderBy('id', 'desc')->paginate(500);
    

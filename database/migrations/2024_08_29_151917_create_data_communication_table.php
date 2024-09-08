@@ -11,11 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ebank_sections', function (Blueprint $table) {
+        Schema::create('data_communications', function (Blueprint $table) {
             $table->id();
+            
             $table->string('name');
             $table->string('image')->nullable();
+            $table->integer('price');
+            $table->string('note')->nullable();
             $table->tinyInteger('status')->default('1');
+            $table->string('type');//1:فاتورة ----2:رصيد ----3----غير مصنف 
             $table->timestamps();
         });
     }
@@ -25,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ebank_sections');
+        Schema::dropIfExists('datas');
     }
 };

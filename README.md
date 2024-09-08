@@ -103,10 +103,9 @@ cd MultiFunctionStore/
 -   composer dump-autoload
 -   php artisan config:cache
 -   php artisan route:cache
--   php artisan serve
--   php artisan migrate:fresh
 -   Php artisan route:list
--   Php artisan route:cache
+-   php artisan migrate:fresh
+-   php artisan serve
 
 
 

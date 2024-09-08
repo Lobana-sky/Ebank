@@ -22,6 +22,7 @@ class App extends Model
         'price',
         'image',
         'note',
+        'status',
         'section_id',
     ];
     
@@ -29,6 +30,14 @@ class App extends Model
     {
         return $this->belongsToMany(User::class);
     }
+
+    
+    public function appSection(): BelongsTo
+    {
+        return $this->belongsTo(AppSection::class);
+    }
+
+
 
 
 }

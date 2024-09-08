@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('transfers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->integer('price');
             $table->string('note')->nullable();
+            $table->tinyInteger('status')->default('1');
             $table->timestamps();
         });
     }

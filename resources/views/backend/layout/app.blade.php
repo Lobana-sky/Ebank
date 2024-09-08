@@ -27,6 +27,10 @@
     body{
         font-size:16px !important
     }
+    .my .input-group-text{
+        width:150px;
+       text-align:center !important
+    }
 
     </style>
 <!-- MAIN CSS -->

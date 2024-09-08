@@ -53,7 +53,22 @@ class ProgramController extends Controller
        
         return back()->with('message', 'تم التعديل بنجاح');
     }
+    public function changeStatus(string $id)
+    {
 
+        $myservice= Program::findOrFail($id);
+       
+        if($myservice->status)
+         { $myservice->status=0;
+           $myservice->save();
+            return back()->with('message', 'تم الغاء تفعيل الخدمة  بنجاح');
+         }
+        else
+         { $myservice->status=1;
+            $myservice->save();
+          return back()->with('message', 'تم تفعيل الخدمة  بنجاح');
+         }
+    }
     public function destroy(string $id)
     {
         $program= Program::findOrFail($id);

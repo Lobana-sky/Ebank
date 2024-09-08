@@ -15,10 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('image')->nullable();
-            $table->integer('ebank_id');
-            $table->foreign('ebank_id')->references('id')->on('ebank_sections')->onDelete('cascade');
+            $table->integer('section_id');
+            $table->foreign('section_id')->references('id')->on('ebank_sections')->onDelete('cascade');
             $table->integer('price');
             $table->string('note')->nullable();
+            $table->tinyInteger('status')->default('1');
             $table->timestamps();
         });
     }

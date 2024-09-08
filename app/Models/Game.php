@@ -10,18 +10,23 @@ class Game extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'game_id',
+        'section_id',
         'name',
         'image',
         'price',
+        'status',
         'note',
     ];
     
     /**
      * Get the user that owns the turkification.
      */
-    public function user(): BelongsToMany
+    public function users(): BelongsToMany
     {
-        return $this->BelongsToMany(User::class);
+        return $this->belongsToMany(User::class);
+    }
+    public function gameSections(): BelongsTo
+    {
+        return $this->belongsToMany(GameSection::class);
     }
 }

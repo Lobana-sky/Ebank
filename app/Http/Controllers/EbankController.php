@@ -12,10 +12,16 @@ class EbankController extends Controller
     { 
         $ebanks=DB::table('ebanks')->select('*')->orderBy('id', 'desc')->paginate(500);
         
-        $ebanks_sections=DB::table('ebank_sections')->select('*')->orderBy('id', 'desc')->paginate(500);
-        return view('backend.ebank.ebanks.index', compact('ebanks','ebanks_sections'));
+        $ebankSections=DB::table('ebank_sections')->select('*')->orderBy('id', 'desc')->paginate(500);
+        return view('backend.ebank.ebanks.index', compact('ebanks','ebankSections'));
     }
-
+    public function showCategory($id)
+    {
+        $ebanks=DB::table('ebanks')->select('*')->where('section_id',$id)->orderBy('id', 'desc')->paginate(500);
+   
+        $ebankSections=DB::table('ebank_sections')->select('*')->orderBy('id', 'desc')->paginate(500);
+        return view('backend.ebank.ebanks.index',compact('ebanks','ebankSections'));
+    }
     public function store(Request $request)
     {
         $input = $request->all();
@@ -57,7 +63,31 @@ class EbankController extends Controller
        
         return back()->with('message', 'تم التعديل بنجاح');
     }
+    public function showEbanks($id)
+    {
+        $ebanks=DB::table('ebanks')->select('*')->where('section_id',$id)->orderBy('id', 'desc')->paginate(500);
+   
+        $ebankSections=DB::table('ebank_sections')->select('*')->orderBy('id', 'desc')->paginate(500);
+        return view('backend.ebank.ebanks.index',compact('ebanks','ebankSections'));
+    }
+    public function changeStatus(string $id)
+    {
 
+        $myservice= Ebank::findOrFail($id);
+
+        if($myservice->status)
+         { $myservice->status=0;
+           $myservice->save();
+            return back()->with('message', 'تم الغاء تفعيل الخدمة  بنجاح');
+         }
+        else
+         { $myservice->status=1;
+            $myservice->save();
+         // dd($myservice->status);
+          return back()->with('message', 'تم تفعيل الخدمة  بنجاح');
+         }
+       
+    }
     public function destroy(string $id)
     {
         $ebank= Ebank::findOrFail($id);

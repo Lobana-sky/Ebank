@@ -19,8 +19,6 @@ return new class extends Migration
             $table->string('mobile');
             $table->integer('role');//1,2,3,4  --- 1 is admin
             $table->integer('agent_id')->nullable();
-           	
-           
             $table->integer('vip_id')->nullable();
             $table->foreign('vip_id')->references('id')->on('vips')->onDelete('cascade');
             $table->string('image')->nullable();
@@ -29,6 +27,7 @@ return new class extends Migration
             $table->string('nationality')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->tinyInteger('status')->default('0');
             $table->rememberToken();
             $table->timestamps();
         });

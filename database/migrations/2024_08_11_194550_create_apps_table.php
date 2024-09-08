@@ -15,8 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('price');
+            $table->integer('section_id');
+            $table->foreign('section_id')->references('id')->on('app_sections')->onDelete('cascade');
             $table->string('image')->nullable();
             $table->string('note')->nullable();
+            $table->tinyInteger('status')->default('1');
             $table->timestamps();
         });
     }

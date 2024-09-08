@@ -31,7 +31,7 @@
                 <div class="col-lg-12 col-md-12">
                     <div class="card">
                         <div class="header">
-                            <h2>الالعاب</h2>
+                            <h2>البطاقات</h2>
                         </div>
                         <div class="body project_report">
                             <div class="table-responsive">
@@ -42,6 +42,7 @@
                                             <th> الصورة </th>
                                             <th>  السعر</th>
                                             <th>العمليات</th>
+                                            <th>الحالة </th>
                                         </tr>
                                     </thead>
                                     
@@ -60,6 +61,14 @@
                                                 <a href="javascript:void(0);" class="btn btn-sm btn-outline-primary"><i class="icon-eye"></i></a>
                                                 <a href="javascript:void(0);" data-toggle="modal" data-target="#editModal{{$card->id}}" class="btn btn-sm btn-outline-success"><i class="icon-pencil"></i></a>
                                                 <a  href="javascript:void(0);" data-toggle="modal" data-target="#deleteModal{{$card->id}}" class="btn btn-sm btn-outline-danger" ><i class="icon-trash"></i></a>
+                                            </td>
+                                            <td>
+                                            @if($card->status)
+                                            <a href="javascript:void(0);" data-toggle="modal" class="btn btn-primary" data-target="#enableModal{{$card->id}}"style="background-color:#22a191" ><i class="fa fa-add" >ايقاف </i></a>
+                                                @else
+                                            <a href="javascript:void(0);" data-toggle="modal" class="btn btn-primary" data-target="#enableModal{{$card->id}}" style="background-color:#23b5a7a1"><i class="fa fa-add" >  تفعيل </i></a>
+
+                                                @endif
                                             </td>
                                         </tr>
                                         @endforeach
@@ -206,5 +215,34 @@
 </div>
 @endforeach
 
+
+
+<!--------------enable -------------->
+@foreach ($cards as $key => $card)
+<div class="modal fade" id="enableModal{{$card->id}}" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                @if($card->status)
+                <h4 class="title" id="defaultModalLabeldelete">هل أنت بالتاكيد تريد الغاء تفعيل الخدمة ؟ </h4>
+                @else
+                
+                <h4 class="title" id="defaultModalLabeldelete">هل أنت بالتاكيد تريد تفعيل الخدمة؟  </h4>
+                @endif
+            </div>
+            <div class="modal-body"> 
+              <form action="/card/{{$card->id}}/status" method="POST">
+               @csrf
+               <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+               <div class="modal-footer">
+                   <button type="submit" class="btn btn-primary">نعم</button>
+                   <a href="#" class="btn btn-secondary" data-dismiss="modal">الغاء الأمر</a>
+               </div>
+              </form>
+           </div>
+        </div>
+    </div>
+</div>
+@endforeach
 
 @endsection

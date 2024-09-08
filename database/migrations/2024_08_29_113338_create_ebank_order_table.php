@@ -23,6 +23,7 @@ return new class extends Migration
             $table->integer('price');
             $table->string('mobile');
             $table->string('note')->nullable();
+
             $table->timestamps();
         });
     }

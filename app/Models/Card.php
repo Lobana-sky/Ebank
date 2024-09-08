@@ -15,11 +15,12 @@ class Card extends Model
         'image',
         'price',
         'note',
+        'status',
     ];
     
     
-    public function user(): BelongsToMany
+    public function users(): BelongsToMany
     {
-        return $this->BelongsToMany(User::class);
+        return $this->belongsToMany(User::class);
     }
 }

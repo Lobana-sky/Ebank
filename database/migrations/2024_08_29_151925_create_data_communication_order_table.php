@@ -11,14 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('turkification_orders', function (Blueprint $table) {
+        Schema::create('data_dommunication_orders', function (Blueprint $table) {
             $table->id();
+            $table->integer('data_id');
             $table->integer('user_id');
+            $table->foreign('data_id')->references('id')->on('datas')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->string('ime');
-            $table->integer('price');
+            $table->string('price');
+            $table->string('mobile');
+            $table->integer('count');
             $table->string('note')->nullable();
-            
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('turkification_orders');
+        Schema::dropIfExists('data_orders');
     }
 };

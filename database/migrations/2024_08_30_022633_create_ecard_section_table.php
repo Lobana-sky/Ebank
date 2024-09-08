@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('ecard_sections', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('image');
+            $table->string('image')->nullable();
+            $table->tinyInteger('status')->default('1');
             $table->timestamps();
         });
     }

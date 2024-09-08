@@ -11,6 +11,7 @@ class EcardOrderController extends Controller
     public function index()
     {
         $ecardOrders=DB::table('ecard_orders')->select('*')->orderBy('id', 'desc')->paginate(500);
+
         return view('backend.ecard.ecardOrders.index', compact('ecardOrders'));
     }
 
@@ -26,13 +27,13 @@ class EcardOrderController extends Controller
         $ecardOrder = EcardOrder::findOrFail($id);
         $input = $request->all();
         $ecardOrder->update($input);
-        
         return back()->with('message', 'تم التعديل بنجاح');
     }
 
     public function destroy($id)
-    {
+    { 
         $ecardOrder= EcardOrder::findOrFail($id);
+        
         $ecardOrder->delete();
         return back()->with('message', 'تم الحذف  بنجاح');
     }

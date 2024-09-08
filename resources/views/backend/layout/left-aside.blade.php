@@ -66,8 +66,8 @@
                                     </li>
                                     <li><a href="#"> قسم البيانات والاتصالات</a>
                                        <ul>
-                                        <li><a href="/data">الشركات</a></li>
-                                        <li><a href="/data-order">الطلبات </a></li>
+                                        <li><a href="/data-communication">الشركات</a></li>
+                                        <li><a href="/data-communication-order">الطلبات </a></li>
                                       </ul>
                                     </li>
                                     <li><a href="/ebank-section">قسم البنوك الرقمية</a>
