@@ -13,9 +13,7 @@ return new class extends Migration
     {
         Schema::create('transfer_orders', function (Blueprint $table) {
             $table->id();
-            $table->integer('transfer_id');
             $table->integer('user_id');
-            $table->foreign('transfer_id')->references('id')->on('transfers')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('price');
             $table->string('mobile');

@@ -38,7 +38,6 @@
                                 <table class="table table-hover js-basic-example dataTable table-custom mb-0">
                                     <thead>
                                         <tr> 
-                                            <th>اسم التطبيق</th>
                                             <th>اسم المستخدم</th>
                                             <th>السعر</th>
                                             <th>العدد</th>
@@ -51,9 +50,8 @@
                                         @foreach ($transferOrders as $key => $transferOrder)
                                         <tr>
                                             <td class="project-title">
-                                                <h6>{{$transferOrder->transfer_id}}</h6>
+                                                <h6>{{$transferOrder->user_id}}</h6>
                                             </td>
-                                            <td>{{$transferOrder->user_id}}</td>
                                             <td>{{$transferOrder->price}}</td>
                                             <td>{{$transferOrder->count}}</td>
                                             <td>{{$transferOrder->mobile}}</td>
@@ -90,13 +88,6 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <input type="text" class="form-control" required placeholder="اسم تحويل" name="transfer_id" aria-label="transfer_id" aria-describedby="basic-addon2">
-                    </div>
-
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
-                        </div>
                         <input type="text" class="form-control" required placeholder="اسم المستخدم" name="user_id" aria-label="user_id" aria-describedby="basic-addon2">
                     </div>
 
@@ -125,7 +116,6 @@
                         <textarea class="form-control" name="note" placeholder="الوصف" ></textarea>
                     </div>
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                    <input type="hidden" name="transfer_id" value="1" />
                     <input type="hidden" name="user_id" value="1" />
                     <div class="modal-footer">   
                         <button type="submit" class="btn btn-primary">حفظ</button>
@@ -173,13 +163,6 @@
                 <form method="POST" action="{{ route('transfer-order.update', $transfer->id) }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     {{ method_field('PATCH') }}
-
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
-                        </div>
-                        <input type="text" class="form-control" value="{{$transferOrder->transfer_id}}" required placeholder="اسم تحويل" name="transfer_id" aria-label="transfer_id" aria-describedby="basic-addon2">
-                    </div>
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">

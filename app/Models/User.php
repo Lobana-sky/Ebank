@@ -66,20 +66,25 @@ class User extends Authenticatable
     {
         return $this->hasMany(Vip::class);
     }
-
+    
+    public function transfer_money_firms(): BelongsToMany
+    {
+        return $this->belongsToMany(TransferMoneyFirm::class);
+    }
+    
+    public function apps(): BelongsToMany
+    {
+        return $this->belongsToMany(App::class);
+    }
+    
     public function turkification_orders(): HasMany
     {
         return $this->hasMany(TurkificationOrder::class);
     }
 
-    public function transfer_money_firms(): BelongsToMany
+    public function transfer_orders(): HasMany
     {
-        return $this->belongsToMany(TransferMoneyFirm::class);
-    }
-
-    public function apps(): BelongsToMany
-    {
-        return $this->belongsToMany(App::class);
+        return $this->hasMany(TransferOrder::class);
     }
 
 }

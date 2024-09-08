@@ -14,14 +14,14 @@ class SettingController extends Controller
         $setting= Setting::create([
             'app_name'=>" ",
             'logo'=>"",
-           'about_text'=>"",
-           'mobile'=>"",
-           'address'=>"",
-           'email'=>"",
-           'facebook'=>"",
-           'instagram'=>"",
-           'twitter'=>"",
-           'telegram'=>"",
+            'about_text'=>"",
+            'mobile'=>"",
+            'address'=>"",
+            'email'=>"",
+            'facebook'=>"",
+            'instagram'=>"",
+            'twitter'=>"",
+            'telegram'=>"",
         ]);
         return view('backend.setting.index', compact('setting'));
     }

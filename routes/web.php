@@ -51,7 +51,7 @@ use Illuminate\Support\Facades\Session;
 Route::get('/', function (Request $request) {
     Session::put('key', 'value');
     $value = Session::get('key');
-    dd($value);
+    // dd($value);
 
  
     return view('welcome');});
