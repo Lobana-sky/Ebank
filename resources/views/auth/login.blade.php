@@ -35,7 +35,9 @@ body.font-nunito {
 			<div class="vertical-align-middle auth-main">
 				<div class="auth-box">
                     <div class="top">
-                        <img src="assets/images/logo-white.svg" alt="Iconic">
+                        <!-- <img src="assets/images/logo-white.svg" alt="Iconic"> -->
+                        <img src="assets/images/{{session('logo')}}" alt="Iconic">
+                        
                     </div>
 					<div class="card" style="direction:rtl">
                         <div class="header">
