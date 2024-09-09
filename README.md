@@ -119,11 +119,4 @@ cd MultiFunctionStore/
 -   check it on http://127.0.0.1:8000/
 # MultiFunctionEStore
 
-to add edit icon for inputs 
 
-<div class="input-group mb-3">
-    <div class="input-group-prepend">
-        <span class="input-group-text"><i class="fa fa-edit"> </i></span>
-    </div>
-    // add input here
-</div># Ebank
