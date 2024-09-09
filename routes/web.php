@@ -47,12 +47,11 @@ use Illuminate\Support\Facades\Session;
 
 
 
-Route::get('/', function (Request $request) {
-    Session::put('key', 'value');
-    $value = Session::get('key');
-    // dd($value);
+use App\Http\Middleware\LoadSettings;
 
- 
+Route::middleware([LoadSettings::class])->group(function () {
+    
+Route::get('/', function (Request $request) {
     return view('welcome');});
 
 Route::get('/dashboard', function () {
@@ -124,5 +123,7 @@ Route::group(['middleware'=> 'auth'], function(){
     
     Route::resource('vip', VipController::class,);
 
-});  
+}); 
+
+}); 
 Auth::routes();

@@ -15,13 +15,8 @@ class UserController extends Controller
         return view('backend.users.index', compact('users','vips'));
     }
 
-    public function create()
-    {
-    }
-
     public function store(Request $request)
     {
-    
         $input = $request->all();
         if($request->file('image')!="")
         {
@@ -40,19 +35,11 @@ class UserController extends Controller
         return back()->with('message', 'تمت الاضافة بنجاح');        
     }
 
-    public function show( int $id)
-    {
-    }
-
     public function showCategory($id)
     {
         $users=DB::table('users')->select('*')->where('role',$id)->orderBy('id', 'desc')->paginate(500);
    
         return view('backend.users.index',compact('users'));
-    }
-
-    public function edit( $id)
-    {
     }
 
     public function update(Request $request,  $id)

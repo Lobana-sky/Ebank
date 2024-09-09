@@ -12,16 +12,16 @@ class SettingController extends Controller
         $setting=DB::table('settings')->select('*')->orderBy('id', 'desc')->first();
         if(!$setting)
         $setting= Setting::create([
-            'app_name'=>" ",
-            'logo'=>"",
-            'about_text'=>"",
+            'app_name'=>"our beauty app",
+            'logo'=>"loo",
+            'about_text'=>"about_text",
             'mobile'=>"",
-            'address'=>"",
-            'email'=>"",
-            'facebook'=>"",
-            'instagram'=>"",
-            'twitter'=>"",
-            'telegram'=>"",
+            'address'=>"mobile",
+            'email'=>"email",
+            'facebook'=>"facebook",
+            'instagram'=>"instagram",
+            'twitter'=>"twitter",
+            'telegram'=>"telegram",
         ]);
         return view('backend.setting.index', compact('setting'));
     }

@@ -4,7 +4,7 @@
             <div class="navbar-brand">
                 <button type="button" class="btn-toggle-offcanvas"><i class="fa fa-bars"></i></button>
                 <button type="button" class="btn-toggle-fullwidth"><i class="fa fa-bars"></i></button>
-                <a href="index.html">ICONIC</a> 
+                <a href="index.html">{{session('app_name') }}</a> 
             </div>
             
             <div class="navbar-right">
