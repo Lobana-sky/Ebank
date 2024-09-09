@@ -78,11 +78,6 @@ class User extends Authenticatable
         return $this->hasMany(TransferOrder::class);
     }
 
-    public function transferMoneyFirms(): BelongsToMany
-    {
-        return $this->belongsToMany(TransferMoneyFirm::class, 'transfer_money_firm_orders');
-    }
-
     public function apps(): BelongsToMany
     {
         return $this->belongsToMany(App::class, 'app_orders', 'app_id', 'user_id');
@@ -90,36 +85,42 @@ class User extends Authenticatable
     
     public function cards(): BelongsToMany
     {
-        return $this->belongsToMany(Card::class, 'card_orders');
+        return $this->belongsToMany(Card::class, 'card_orders', 'card_id', 'user_id');
     }
-
-    public function DataCommunications(): BelongsToMany
-    {
-        return $this->belongsToMany(DataCommunication::class, 'data_communication_orders');
-    }
-
-    public function datas(): BelongsToMany
-    {
-        return $this->BelongsToMany(Data::class, 'data_orders');
-    }
+ 
+    // public function datas(): BelongsToMany
+    // {
+    //     return $this->BelongsToMany(Data::class, 'data_orders', 'data_id', 'user_id');
+    // }
 
     public function ebanks(): BelongsToMany
     {
-        return $this->BelongsToMany(Ebank::class, 'ebank_orders');
+        return $this->BelongsToMany(Ebank::class, 'ebank_orders', 'ebank_id', 'user_id');
     }
 
     public function ecards(): BelongsToMany
     {
-        return $this->BelongsToMany(Ecard::class, 'ecard_orders');
+        return $this->BelongsToMany(Ecard::class, 'ecard_orders', 'ecard_id', 'user_id');
     }
 
     public function games(): BelongsToMany
     {
-        return $this->belongsToMany(Game::class, 'game_orders');
+        return $this->belongsToMany(Game::class, 'game_orders', 'game_id', 'user_id');
     }
 
     public function programs(): BelongsToMany
     {
-        return $this->belongsToMany(Program::class, 'program_orders');
+        return $this->belongsToMany(Program::class, 'program_orders', 'program_id', 'user_id');
     }
+       
+    public function transferMoneyFirms(): BelongsToMany
+    {
+        return $this->belongsToMany(TransferMoneyFirm::class, 'transfer_money_firm_orders', 'transfer_money_firm_id', 'user_id');
+    }
+
+    public function DataCommunications(): BelongsToMany
+    {
+        return $this->belongsToMany(DataCommunication::class, 'data_communication_orders', 'data_id', 'user_id');
+    }
+
 }

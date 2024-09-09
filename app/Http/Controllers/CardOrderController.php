@@ -11,7 +11,12 @@ class CardOrderController extends Controller
 {
     public function index()
     {
-        $cardOrders=DB::table('card_orders')->select('*')->orderBy('id', 'desc')->paginate(500);
+        // $cardOrders=DB::table('card_orders')->select('*')->orderBy('id', 'desc')->paginate(500);
+        $cardOrders = DB::table('card_orders')
+            ->join('users', 'card_orders.user_id', '=', 'users.id')
+            ->join('cards', 'card_orders.card_id', '=', 'cards.id')
+            ->select('card_orders.*', 'users.name as user_name', 'cards.name as card_name')
+            ->get();
         return view('backend.card.cardOrders.index', compact('cardOrders'));
     }
 

@@ -50,15 +50,14 @@
                                         @foreach ($ecardOrders as $key => $ecardOrder)
                                         <tr>
                                             <td class="project-title">
-                                                <h6>{{$ecardOrder->ecard_id}}</h6>
+                                                <h6>{{$ecardOrder->ecard_name}}</h6>
                                             </td>
-                                            <td>{{$ecardOrder->user_id}}</td>
+                                            <td>{{$ecardOrder->user_name}}</td>
                                             <td>{{$ecardOrder->price}}</td>
                                             <td>{{$ecardOrder->count}}</td>
                                             <td>{{$ecardOrder->note}}</td>
                                             <td class="project-actions">
                                                 <a href="#defaultModal" data-toggle="modal" data-target="#defaultModal">
-                                                <a href="javascript:void(0);" class="btn btn-sm btn-outline-primary"><i class="icon-eye"></i></a>
                                                 <a href="javascript:void(0);" data-toggle="modal" data-target="#editModal{{$ecardOrder->id}}" class="btn btn-sm btn-outline-success"><i class="icon-pencil"></i></a>
                                                 <a href="javascript:void(0);" data-toggle="modal" data-target="#deleteModal{{$ecardOrder->id}}" class="btn btn-sm btn-outline-danger" ><i class="icon-trash"></i></a>
                                             </td>
@@ -167,19 +166,18 @@
                     {{ csrf_field() }}
                     {{ method_field('PATCH') }}
 
-
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <input type="text" class="form-control" value="{{$ecardOrder->ecard_id}}" required placeholder="اسم البطاقة" name="ecard_id" aria-label="ecard_id" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control" value="{{$ecardOrder->ecard_name}}" required placeholder="اسم البطاقة" name="ecard_id" aria-label="ecard_id" aria-describedby="basic-addon2" readonly>
                     </div>
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <input type="text" class="form-control" value="{{$ecardOrder->user_id}}" required placeholder="اسم المستخدم" name="user_id" aria-label="user_id" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control" value="{{$ecardOrder->user_name}}" required placeholder="اسم المستخدم" name="user_id" aria-label="user_id" aria-describedby="basic-addon2" readonly>
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">

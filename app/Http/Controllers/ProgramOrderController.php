@@ -11,7 +11,12 @@ class ProgramOrderController extends Controller
 {
     public function index()
     {
-        $programOrders=DB::table('program_orders')->select('*')->orderBy('id', 'desc')->paginate(500);
+        // $programOrders=DB::table('program_orders')->select('*')->orderBy('id', 'desc')->paginate(500);
+        $programOrders = DB::table('program_orders')
+            ->join('users', 'program_orders.user_id', '=', 'users.id')
+            ->join('programs', 'program_orders.program_id', '=', 'programs.id')
+            ->select('program_orders.*', 'users.name as user_name', 'programs.name as program_name')
+            ->get();
         return view('backend.program.programOrders.index', compact('programOrders'));
     }
 

@@ -10,7 +10,12 @@ class GameOrderController extends Controller
 {
     public function index()
     {
-        $gameOrders=DB::table('game_orders')->select('*')->orderBy('id', 'desc')->paginate(500);
+        // $gameOrders=DB::table('game_orders')->select('*')->orderBy('id', 'desc')->paginate(500);
+        $gameOrders = DB::table('game_orders')
+            ->join('users', 'game_orders.user_id', '=', 'users.id')
+            ->join('games', 'game_orders.game_id', '=', 'games.id')
+            ->select('game_orders.*', 'users.name as user_name', 'games.name as game_name')
+            ->get();
         return view('backend.game.gameOrders.index', compact('gameOrders'));
     }
 

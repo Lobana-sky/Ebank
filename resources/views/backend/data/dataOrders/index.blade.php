@@ -51,9 +51,9 @@
                                         @foreach ($dataOrders as $key => $dataOrder)
                                         <tr>
                                             <td class="project-title">
-                                                <h6>{{$dataOrder->data_id}}</h6>
+                                                <h6>{{$dataOrder->data_name}}</h6>
                                             </td>
-                                            <td>{{$dataOrder->user_id}}</td>
+                                            <td>{{$dataOrder->user_name}}</td>
                                             <td>{{$dataOrder->count}}</td>
                                             <td>{{$dataOrder->price}}</td>
                                             <td>{{$dataOrder->note}}</td>
@@ -174,14 +174,14 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <input type="text" class="form-control" value="{{$dataOrder->data_id}}" required placeholder="اسم التطبيق" name="data_id" aria-label="data_id" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control" value="{{$dataOrder->data_name}}" required placeholder="اسم التطبيق" name="data_id" aria-label="data_id" aria-describedby="basic-addon2" readonly>
                     </div>
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <input type="text" class="form-control" value="{{$dataOrder->user_id}}" required placeholder="اسم المستخدم" name="user_id" aria-label="user_id" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control" value="{{$dataOrder->user_name}}" required placeholder="اسم المستخدم" name="user_id" aria-label="user_id" aria-describedby="basic-addon2" readonly>
                     </div>
 
                     <div class="input-group mb-3">

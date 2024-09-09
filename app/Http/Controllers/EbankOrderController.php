@@ -11,7 +11,12 @@ class EbankOrderController extends Controller
 {
     public function index()
     {
-        $ebankOrders=DB::table('ebank_orders')->select('*')->orderBy('id', 'desc')->paginate(500);
+        // $ebankOrders=DB::table('ebank_orders')->select('*')->orderBy('id', 'desc')->paginate(500);
+        $ebankOrders = DB::table('ebank_orders')
+            ->join('users', 'ebank_orders.user_id', '=', 'users.id')
+            ->join('ebanks', 'ebank_orders.ebank_id', '=', 'ebanks.id')
+            ->select('ebank_orders.*', 'users.name as user_name', 'ebanks.name as ebank_name')
+            ->get();
         return view('backend.ebank.ebankOrders.index', compact('ebankOrders'));
     }
 

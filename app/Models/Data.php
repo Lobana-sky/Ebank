@@ -20,6 +20,6 @@ class Data extends Model
     
     public function user(): BelongsToMany
     {
-        return $this->BelongsToMany(User::class, 'data_orders');
+        return $this->BelongsToMany(User::class, 'data_orders', 'data_id', 'user_id');
     }
 }

@@ -21,7 +21,7 @@ class Ecard extends Model
     
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'ecard_orders');
+        return $this->belongsToMany(User::class, 'ecard_orders', 'ecard_id', 'user_id');
     }
 
     public function ecardSection(): BelongsTo

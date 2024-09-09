@@ -21,7 +21,7 @@ class Ebank extends Model
 
     public function users(): BelongsToMany
     {
-        return $this->BelongsToMany(User::class, 'ebank_orders');
+        return $this->BelongsToMany(User::class, 'ebank_orders', 'ebank_id', 'user_id');
     }
     
     public function ebankSection(): BelongsTo

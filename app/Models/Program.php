@@ -19,7 +19,7 @@ class Program extends Model
     
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'program_orders');
+        return $this->belongsToMany(User::class, 'program_orders', 'program_id', 'user_id');
     }
 
 }

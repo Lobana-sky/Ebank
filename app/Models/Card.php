@@ -21,6 +21,6 @@ class Card extends Model
     
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'card_orders');
+        return $this->belongsToMany(User::class, 'card_orders', 'card_id', 'user_id');
     }
 }

@@ -50,16 +50,15 @@
                                         @foreach ($gameOrders as $key => $gameOrder)
                                         <tr>
                                             <td class="project-title">
-                                                <h6>{{$gameOrder->game_id}}</h6>
+                                                <h6>{{$gameOrder->game_name}}</h6>
                                             </td>
-                                            <td>{{$gameOrder->user_id}}</td>
+                                            <td>{{$gameOrder->user_name}}</td>
                                             <td>{{$gameOrder->user_id_game}}</td>
                                             <td>{{$gameOrder->count}}</td>
                                             <td>{{$gameOrder->price}}</td>
                                             <td>{{$gameOrder->note}}</td>
                                             <td class="project-actions">
                                                 <a href="#defaultModal" data-toggle="modal" data-target="#defaultModal">
-                                                <a href="javascript:void(0);" class="btn btn-sm btn-outline-primary"><i class="icon-eye"></i></a>
                                                 <a href="javascript:void(0);" data-toggle="modal" data-target="#editModal{{$gameOrder->id}}" class="btn btn-sm btn-outline-success"><i class="icon-pencil"></i></a>
                                                 <a href="javascript:void(0);" data-toggle="modal" data-target="#deleteModal{{$gameOrder->id}}" class="btn btn-sm btn-outline-danger" ><i class="icon-trash"></i></a>
                                             </td>
@@ -186,14 +185,14 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <input type="text" class="form-control" value="{{$gameOrder->game_id}}" required placeholder="اسم لعبة" name="game_id" aria-label="game_id" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control" value="{{$gameOrder->game_name}}" required placeholder="اسم لعبة" name="game_id" aria-label="game_id" aria-describedby="basic-addon2" readonly>
                     </div>
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <input type="text" class="form-control" value="{{$gameOrder->user_id}}" required placeholder="اسم المستخدم" name="user_id" aria-label="user_id" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control" value="{{$gameOrder->user_name}}" required placeholder="اسم المستخدم" name="user_id" aria-label="user_id" aria-describedby="basic-addon2" readonly>
                     </div>
 
                     <div class="input-group mb-3">

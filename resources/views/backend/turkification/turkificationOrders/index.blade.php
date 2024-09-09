@@ -14,7 +14,7 @@
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html"><i class="fa fa-dashboard"></i></a></li>                            
                         <li class="breadcrumb-item">لوحة التحكم</li>
-                        <li class="breadcrumb-item active">  التتريك</li>
+                        <li class="breadcrumb-item active">التتريك</li>
                     </ul>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">
@@ -38,7 +38,6 @@
                                         <tr>                                            
                                             <th>اسم المستخدم</th>
                                             <th>IME</th>
-                                            <th>الحالة</th>
                                             <th>العمليات</th>
                                         </tr>
                                     </thead>
@@ -46,14 +45,11 @@
                                         @foreach ($turkificationOrders as $key => $turkificationOrder)
                                         <tr>
                                             <td class="project-title">
-                                                <h6>{{$turkificationOrder->id}}</h6>
-                                                <small>user name</small>
+                                                <h6>{{$turkificationOrder->user()->name}}</h6>
                                             </td>
-                                            <td>done</td>
                                             <td>{{$turkificationOrder->ime}}</td>
                                             <td class="project-actions">
                                                 <a href="#defaultModal" data-toggle="modal" data-target="#defaultModal">
-                                                <a href="javascript:void(0);" class="btn btn-sm btn-outline-primary"><i class="icon-eye"></i></a>
                                                 <a href="javascript:void(0);" data-toggle="modal" data-target="#editModal{{$turkificationOrder->id}}" class="btn btn-sm btn-outline-success"><i class="icon-pencil"></i></a>
                                                 <a  href="javascript:void(0);" data-toggle="modal" data-target="#deleteModal{{$turkificationOrder->id}}" class="btn btn-sm btn-outline-danger" ><i class="icon-trash"></i></a>
                                             </td>
@@ -134,6 +130,13 @@
                 <form method="POST" action="{{ route('turkification-order.update',  $turkificationOrder->id) }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     {{ method_field('PATCH') }}
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-edit"> </i></span>
+                        </div>
+                        <input type="text" class="form-control" value="{{$turkificationOrder->user()->name}}" required placeholder="اسم المستخدم" name="user_id" aria-label="user_id" aria-describedby="basic-addon2" readonly>
+                    </div>
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">

@@ -49,15 +49,14 @@
                                         @foreach ($cardOrders as $key => $cardOrder)
                                         <tr>
                                             <td class="project-title">
-                                                <h6>{{$cardOrder->card_id}}</h6>
+                                                <h6>{{$cardOrder->card_name}}</h6>
                                             </td>
-                                            <td>{{$cardOrder->user_id}}</td>
+                                            <td>{{$cardOrder->user_name}}</td>
                                             <td>{{$cardOrder->price}}</td>
                                             <td>{{$cardOrder->count}}</td>
                                             <td>{{$cardOrder->note}}</td>
                                             <td class="project-actions">
                                                 <a href="#defaultModal" data-toggle="modal" data-target="#defaultModal">
-                                                <a href="javascript:void(0);" class="btn btn-sm btn-outline-primary"><i class="icon-eye"></i></a>
                                                 <a href="javascript:void(0);" data-toggle="modal" data-target="#editModal{{$cardOrder->id}}" class="btn btn-sm btn-outline-success"><i class="icon-pencil"></i></a>
                                                 <a  href="javascript:void(0);" data-toggle="modal" data-target="#deleteModal{{$cardOrder->id}}" class="btn btn-sm btn-outline-danger" ><i class="icon-trash"></i></a>
                                             </td>
@@ -74,9 +73,6 @@
     </div>
 </div>
 
-
-<th>اسم التطبيق</th>
-                                            <th>اسم المستخدم</th>
 <!-------------create--------->
 <div class="modal fade" id="createmodal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
@@ -168,13 +164,13 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <input type="text" class="form-control" value="{{$cardOrder->card_id}}" required placeholder="اسم البطاقة"  name="card_id" aria-label="card_id" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control" value="{{$cardOrder->card_name}}" required placeholder="اسم البطاقة"  aria-label="card_id" aria-describedby="basic-addon2" readonly>
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <input type="text" class="form-control" value="{{$cardOrder->user_id}}" required placeholder="اسم المستخدم" name="user_id" aria-label="user_id" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control" value="{{$cardOrder->user_name}}" required placeholder="اسم المستخدم" aria-label="user_id" aria-describedby="basic-addon2" readonly>
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">

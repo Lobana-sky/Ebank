@@ -21,7 +21,7 @@ class Game extends Model
   
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'game_orders');
+        return $this->belongsToMany(User::class, 'game_orders', 'game_id', 'user_id');
     }
     
     public function gameSection(): BelongsTo

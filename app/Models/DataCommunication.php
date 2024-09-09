@@ -21,6 +21,6 @@ class DataCommunication extends Model
     
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'data_communication_orders');
+        return $this->belongsToMany(User::class, 'data_communication_orders', 'data_id', 'user_id');
     }
 }

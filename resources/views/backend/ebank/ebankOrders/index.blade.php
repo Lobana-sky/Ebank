@@ -19,7 +19,6 @@
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="d-flex flex-row-reverse">
-                 
                         <div class="p-2 d-flex">
                         </div>
                     </div>
@@ -51,9 +50,9 @@
                                         @foreach ($ebankOrders as $key => $ebankOrder)
                                         <tr>
                                             <td class="project-title">
-                                                <h6>{{$ebankOrder->ebank_id}}</h6>
+                                                <h6>{{$ebankOrder->ebank_name}}</h6>
                                             </td>
-                                            <td>{{$ebankOrder->user_id}}</td>
+                                            <td>{{$ebankOrder->user_name}}</td>
                                             <td>{{$ebankOrder->name}}</td>
                                             <td>{{$ebankOrder->count}}</td>
                                             <td>{{$ebankOrder->price}}</td>
@@ -61,7 +60,6 @@
                                             <td>{{$ebankOrder->note}}</td>
                                             <td class="project-actions">
                                                 <a href="#defaultModal" data-toggle="modal" data-target="#defaultModal">
-                                                <a href="javascript:void(0);" class="btn btn-sm btn-outline-primary"><i class="icon-eye"></i></a>
                                                 <a href="javascript:void(0);" data-toggle="modal" data-target="#editModal{{$ebankOrder->id}}" class="btn btn-sm btn-outline-success"><i class="icon-pencil"></i></a>
                                                 <a href="javascript:void(0);" data-toggle="modal" data-target="#deleteModal{{$ebankOrder->id}}" class="btn btn-sm btn-outline-danger" ><i class="icon-trash"></i></a>
                                             </td>
@@ -182,19 +180,19 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <input type="text" class="form-control" value="{{$ebankOrder->ebank_id}}" required placeholder="اسم البنك" name="ebank_id" aria-label="ebank_id" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control" value="{{$ebankOrder->ebank_name}}" required placeholder="اسم البنك" name="ebank_id" aria-label="ebank_id" aria-describedby="basic-addon2" readonly>
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <input type="text" class="form-control" value="{{$ebankOrder->user_id}}" required placeholder="اسم المستخدم" name="user_id" aria-label="user_id" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control" value="{{$ebankOrder->user_name}}" required placeholder="اسم المستخدم" name="user_id" aria-label="user_id" aria-describedby="basic-addon2" readonly>
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <input type="text" class="form-control" value="{{$ebankOrder->name}}" required placeholder=" اسم" name="name" aria-label="name" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control" value="{{$ebankOrder->name}}" required placeholder="اسم" name="name" aria-label="name" aria-describedby="basic-addon2">
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">

@@ -14,12 +14,11 @@
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html"><i class="fa fa-dashboard"></i></a></li>                            
                         <li class="breadcrumb-item">لوحة التحكم</li>
-                        <li class="breadcrumb-item active">   تعبئة الرصيد</li>
+                        <li class="breadcrumb-item active">تعبئة الرصيد</li>
                     </ul>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="d-flex flex-row-reverse">
-                   
                         <div class="p-2 d-flex">
                         </div>
                     </div>
@@ -36,29 +35,30 @@
                                 <table class="table table-hover js-basic-example dataTable table-custom mb-0">
                                     <thead>
                                         <tr>                                            
-                                            <th>اسم المستخدم</th>
                                             <th>اسم الشركة</th>
+                                            <th>اسم المستخدم</th>
                                             <th>اسم المرسل</th>
                                             <th>القيمة</th>
                                             <th>العملة</th>
                                             <th>رقم الوثيقة</th>
                                             <th>كلمة المرور</th>
+                                            <th>العمليات</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($transferMoneyFirmOrders as $key => $transferMoneyFirmOrder)
                                         <tr>
                                             <td class="project-title">
-                                                <h6>{{$transferMoneyFirmOrder->sender}}</h6>
+                                                <h6>{{$transferMoneyFirmOrder->transfer_money_firm_name}}</h6>
                                             </td>
-                                            <td>{{$transferMoneyFirmOrder->user_id}}</td>
+                                            <td>{{$transferMoneyFirmOrder->user_name}}</td>
+                                            <td>{{$transferMoneyFirmOrder->sender}}</td>
                                             <td>{{$transferMoneyFirmOrder->value}}</td>
                                             <td>{{$transferMoneyFirmOrder->currency}}</td>
                                             <td>{{$transferMoneyFirmOrder->dekont_no}}</td>
                                             <td>{{$transferMoneyFirmOrder->password}}</td>
                                             <td class="project-actions">
                                                 <a href="#defaultModal" data-toggle="modal" data-target="#defaultModal">
-                                                <a href="javascript:void(0);" class="btn btn-sm btn-outline-primary"><i class="icon-eye"></i></a>
                                                 <a href="javascript:void(0);" data-toggle="modal" data-target="#editModal{{$transferMoneyFirmOrder->id}}" class="btn btn-sm btn-outline-success"><i class="icon-pencil"></i></a>
                                                 <a  href="javascript:void(0);" data-toggle="modal" data-target="#deleteModal{{$transferMoneyFirmOrder->id}}" class="btn btn-sm btn-outline-danger" ><i class="icon-trash"></i></a>
                                             </td>
@@ -197,14 +197,14 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <input type="text" class="form-control" value="{{$transferMoneyFirmOrder->transfer_money_firm_id}}" required placeholder="اسم شركة الشحن" name="transfer_money_firm_id" aria-label="transfer_money_firm_id" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control" value="{{$transferMoneyFirmOrder->transfer_money_firm_name}}" required placeholder="اسم شركة الشحن" name="transfer_money_firm_id" aria-label="transfer_money_firm_id" aria-describedby="basic-addon2" readonly>
                     </div>
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <input type="text" class="form-control" value="{{$transferMoneyFirmOrder->user_id}}" required placeholder="اسم المستخدم" name="user_id" aria-label="user_id" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control" value="{{$transferMoneyFirmOrder->user_name}}" required placeholder="اسم المستخدم" name="user_id" aria-label="user_id" aria-describedby="basic-addon2" readonly>
                     </div>
 
                     <div class="input-group mb-3">

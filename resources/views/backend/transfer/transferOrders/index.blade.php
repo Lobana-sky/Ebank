@@ -50,7 +50,7 @@
                                         @foreach ($transferOrders as $key => $transferOrder)
                                         <tr>
                                             <td class="project-title">
-                                                <h6>{{$transferOrder->user_id}}</h6>
+                                                <h6>{{$transferOrder->user()->name}}</h6>
                                             </td>
                                             <td>{{$transferOrder->price}}</td>
                                             <td>{{$transferOrder->count}}</td>
@@ -58,7 +58,6 @@
                                             <td>{{$transferOrder->note}}</td>
                                             <td class="project-actions">
                                                 <a href="#defaultModal" data-toggle="modal" data-target="#defaultModal">
-                                                <a href="javascript:void(0);" class="btn btn-sm btn-outline-primary"><i class="icon-eye"></i></a>
                                                 <a href="javascript:void(0);" data-toggle="modal" data-target="#editModal{{$transferOrder->id}}" class="btn btn-sm btn-outline-success"><i class="icon-pencil"></i></a>
                                                 <a href="javascript:void(0);" data-toggle="modal" data-target="#deleteModal{{$transferOrder->id}}" class="btn btn-sm btn-outline-danger" ><i class="icon-trash"></i></a>
                                             </td>
@@ -168,7 +167,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <input type="text" class="form-control" value="{{$transferOrder->user_id}}" required placeholder="اسم المستخدم" name="user_id" aria-label="user_id" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control" value="{{$transferOrder->user()->name}}" required placeholder="اسم المستخدم" name="user_id" aria-label="user_id" aria-describedby="basic-addon2" readonly>
                     </div>
 
                     <div class="input-group mb-3">

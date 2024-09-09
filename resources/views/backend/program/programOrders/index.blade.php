@@ -48,9 +48,9 @@
                                         @foreach ($programOrders as $key => $programOrder)
                                         <tr>
                                             <td class="project-title">
-                                                <h6>{{$programOrder->program_id}}</h6>
+                                                <h6>{{$programOrder->program_name}}</h6>
                                             </td>
-                                            <td>{{$programOrder->user_id}}</td>
+                                            <td>{{$programOrder->user_name}}</td>
                                             <td>{{$programOrder->price}}</td>
                                             <td>{{$programOrder->count}}</td>
                                             <td>{{$programOrder->note}}</td>
@@ -166,14 +166,14 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <input type="text" class="form-control" value="{{$programOrder->program_id}}" required placeholder="اسم التطبيق" name="program_id" aria-label="program_id" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control" value="{{$programOrder->program_name}}" required placeholder="اسم التطبيق" name="program_id" aria-label="program_id" aria-describedby="basic-addon2" readonly>
                     </div>
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <input type="text" class="form-control" value="{{$programOrder->user_id}}" required placeholder="اسم المستخدم" name="user_id" aria-label="user_id" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control" value="{{$programOrder->user_name}}" required placeholder="اسم المستخدم" name="user_id" aria-label="user_id" aria-describedby="basic-addon2" readonly>
                     </div>
 
                     <div class="input-group mb-3">
