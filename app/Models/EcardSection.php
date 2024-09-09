@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
 
 class EcardSection extends Model
 {
@@ -13,8 +15,10 @@ class EcardSection extends Model
         'image',
         'status',
     ];
-    public function ecards(): BelongsToMany
+  
+    
+    public function ecards(): HasMany
     {
-        return $this->belongsToMany(Ecard::class);
+        return $this->hasMany(Ecard::class);
     }
 }

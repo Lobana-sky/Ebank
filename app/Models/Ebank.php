@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Ebank extends Model
 {
@@ -17,16 +18,15 @@ class Ebank extends Model
         'price',
         'status',
     ];
-    
-    /**
-     * Get the user that owns the turkification.
-     */
+
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany(user::class);
+        return $this->BelongsToMany(User::class, 'ebank_orders');
     }
+    
     public function ebankSection(): BelongsTo
     {
         return $this->belongsTo(ebankSection::class);
     }
+    
 }

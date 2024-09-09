@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
@@ -62,29 +63,63 @@ class User extends Authenticatable
         ];
     }
 
-    public function vips(): HasMany
+    public function vip(): BelongsTo
     {
-        return $this->hasMany(Vip::class);
+        return $this->belongsTo(Vip::class);
     }
-    
-    public function transfer_money_firms(): BelongsToMany
-    {
-        return $this->belongsToMany(TransferMoneyFirm::class);
-    }
-    
-    public function apps(): BelongsToMany
-    {
-        return $this->belongsToMany(App::class);
-    }
-    
-    public function turkification_orders(): HasMany
+
+    public function turkificationOrders(): HasMany
     {
         return $this->hasMany(TurkificationOrder::class);
     }
-
-    public function transfer_orders(): HasMany
+    
+    public function transferOrders(): HasMany
     {
         return $this->hasMany(TransferOrder::class);
     }
 
+    public function transferMoneyFirms(): BelongsToMany
+    {
+        return $this->belongsToMany(TransferMoneyFirm::class, 'transfer_money_firm_orders');
+    }
+
+    public function apps(): BelongsToMany
+    {
+        return $this->belongsToMany(App::class, 'app_orders');
+    }
+    
+    public function cards(): BelongsToMany
+    {
+        return $this->belongsToMany(Card::class, 'card_orders');
+    }
+
+    public function DataCommunications(): BelongsToMany
+    {
+        return $this->belongsToMany(DataCommunication::class, 'data_communication_orders');
+    }
+
+    public function datas(): BelongsToMany
+    {
+        return $this->BelongsToMany(Data::class, 'data_orders');
+    }
+
+    public function ebanks(): BelongsToMany
+    {
+        return $this->BelongsToMany(Ebank::class, 'ebank_orders');
+    }
+
+    public function ecards(): BelongsToMany
+    {
+        return $this->BelongsToMany(Ecard::class, 'ecard_orders');
+    }
+
+    public function games(): BelongsToMany
+    {
+        return $this->belongsToMany(Game::class, 'game_orders');
+    }
+
+    public function programs(): BelongsToMany
+    {
+        return $this->belongsToMany(Program::class, 'program_orders');
+    }
 }

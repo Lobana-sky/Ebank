@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class TransferMoneyFirm extends Model
 {
@@ -24,10 +23,10 @@ class TransferMoneyFirm extends Model
         'image',
         'status',
     ];
-    
-    public function users(): BelongsToMany
+
+    public function users()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'transfer_money_firm_orders');
     }
     
 }

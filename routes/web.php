@@ -30,7 +30,6 @@ use App\Http\Controllers\GameOrderController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\ProgramOrderController;
 
-use App\Http\Controllers\TransferController;
 use App\Http\Controllers\TransferOrderController;
 
 use App\Http\Controllers\TransferMoneyFirmController;
@@ -119,7 +118,6 @@ Route::group(['middleware'=> 'auth'], function(){
     Route::post('/transfer-money-firm/{id}/status',[TransferMoneyFirmController::class,'changeStatus']);
     Route::resource('transfer-money-firm-order' , TransferMoneyFirmOrderController::class,);
     
-    Route::resource('transfer' , TransferController::class,);
     Route::resource('transfer-order' , TransferOrderController::class,);
     
     Route::resource('turkification-order' , TurkificationOrderController::class,);

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 
 class App extends Model
@@ -25,19 +25,15 @@ class App extends Model
         'status',
         'section_id',
     ];
-    
-    public function users(): BelongsToMany
-    {
-        return $this->belongsToMany(User::class);
-    }
 
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'app_orders');
+    }
     
     public function appSection(): BelongsTo
     {
         return $this->belongsTo(AppSection::class);
     }
-
-
-
 
 }

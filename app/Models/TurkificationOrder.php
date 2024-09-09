@@ -23,9 +23,6 @@ class TurkificationOrder extends Model
         'note'
     ];
     
-    /**
-     * Get the user that owns the turkification.
-     */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

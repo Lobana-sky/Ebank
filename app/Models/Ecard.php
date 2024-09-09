@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Ecard extends Model
 {
@@ -18,15 +19,13 @@ class Ecard extends Model
         'status',
     ];
     
-    /**
-     * Get the user that owns the turkification.
-     */
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'ecard_orders');
     }
-    public function ecardSections(): BelongsTo
+
+    public function ecardSection(): BelongsTo
     {
-        return $this->belongsToMany(EcardSection::class);
+        return $this->belongsTo(EcardSection::class);
     }
 }

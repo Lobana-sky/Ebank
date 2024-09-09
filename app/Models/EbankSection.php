@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
 
 class EbankSection extends Model
 {
@@ -19,15 +20,11 @@ class EbankSection extends Model
         'name',
         'image',
         'status',
-      
     ];
 
-      /**
-     * Get the user that owns the turkification.
-     */
-    public function ebanks(): BelongsToMany
+    public function ebanks(): HasMany
     {
-        return $this->belongsTo(ebanks::class);
+        return $this->hasMany(Ebank::class);
     }
     
 }

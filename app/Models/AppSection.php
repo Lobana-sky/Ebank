@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
 
 class AppSection extends Model
 {
@@ -22,10 +23,9 @@ class AppSection extends Model
         'status',
     ];
     
-    public function Apps(): BelongsToMany
+    public function apps(): HasMany
     {
-        return $this->belongsToMany(App::class);
+        return $this->hasMany(App::class);
     }
  
-
 }

@@ -122,7 +122,7 @@
                     </div>
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                     <input type="hidden" name="app_id" value="1" />
-                    <input type="hidden" name="user_id" value="1" />
+                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}" />
                     <div class="modal-footer">   
                         <button type="submit" class="btn btn-primary">حفظ</button>
                         <a href="#" class="btn btn-secondary" data-dismiss="modal">الغاء الأمر</a>

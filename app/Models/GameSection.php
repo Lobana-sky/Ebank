@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 class GameSection extends Model
 {
     use HasFactory;
@@ -21,13 +21,8 @@ class GameSection extends Model
         'status',
     ];
 
-      /**
-     * Get the user that owns the turkification.
-     */
-    public function Games(): BelongsTo
+    public function games(): HasMany
     {
-        return $this->belongsTo(Game::class);
+        return $this->hasMany(Game::class);
     }
-
-
 }
