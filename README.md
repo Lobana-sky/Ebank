@@ -95,9 +95,9 @@ cd MultiFunctionStore/
 
 
 -   git commit -m "clean code"
--   git add .
--   git commit -m "edit icon for all inputs section2"
--   git push
+git add .
+git commit -m "fix route"
+git push
 
 
 -   composer dump-autoload

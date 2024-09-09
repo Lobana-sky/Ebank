@@ -36,8 +36,9 @@
                 <div class="tab-pane active" id="menu">
                     <nav id="left-sidebar-nav" class="sidebar-nav">
                         <ul id="main-menu" class="metismenu li_animation_delay">
-                            <li class="active">       <a href="#App" class="has-arrow"><i class="fa fa-th-large"></i><span>الخدمات</span></a>
-                                      <ul>
+                            <li class="active">
+                                <a href="#App" class="has-arrow"><i class="fa fa-th-large"></i><span>الخدمات</span></a>
+                                    <ul>
 
                                     <li><a href="#">قسم  التطبيقات</a>
                                     <ul>
@@ -115,22 +116,15 @@
                                     <li><a href="/vip/">أنواع العملاء</a></li>
                                 </ul>
                             </li>
-
-
                             <li>
                                 <a href="/users/1/category" class=""><i class="fa fa-user"></i><span>المستخدمين</span></a>
-
                             </li>
                             <li>
                                 <a href="#forms" class=""><i class="fa fa-money"></i><span>اضافة رصيد</span></a>
-
                             </li>
                             <li>
-                                <a href="#Tables" class=""><i class="fa fa-dashboard"></i><span>الاعدادات</span></a>
-
+                                <a href="/setting" class=""><i class="fa fa-dashboard"></i><span>الاعدادات</span></a>
                             </li>
-
-
                         </ul>
                     </nav>
                 </div>
