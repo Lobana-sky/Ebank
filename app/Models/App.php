@@ -28,7 +28,7 @@ class App extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'app_orders');
+        return $this->belongsToMany(User::class, 'app_orders', 'app_id', 'user_id');
     }
     
     public function appSection(): BelongsTo

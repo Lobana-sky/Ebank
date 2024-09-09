@@ -17,6 +17,15 @@
                         <li class="breadcrumb-item active"> التطبيقات</li>
                     </ul>
                 </div>
+                <!-- <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="d-flex flex-row-reverse">
+                        <div class="page_action">
+                            <a href="javascript:void(0);" data-toggle="modal" class="btn btn-primary" data-target="#createmodal" ><i class="fa fa-add">أضف تطبيق جديد</i></a>
+                        </div>
+                        <div class="p-2 d-flex">
+                        </div>
+                    </div>
+                </div> -->
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="d-flex flex-row-reverse">
                    
@@ -49,16 +58,16 @@
                                         @foreach ($appOrders as $key => $appOrder)
                                         <tr>
                                             <td class="project-title">
-                                                <h6>{{$appOrder->app_id}}</h6>
+                                                <h6>{{$appOrder->app_name}}</h6>
                                             </td>
-                                            <td>{{$appOrder->user_id}}</td>
+                                            <td>{{$appOrder->user_name}}</td>
                                             <td>{{$appOrder->player_no}}</td>
                                             <td>{{$appOrder->price}}</td>
                                             <td>{{$appOrder->count}}</td>
                                             <td>{{$appOrder->note}}</td>
                                             <td class="project-actions">
                                                 <a href="#defaultModal" data-toggle="modal" data-target="#defaultModal">
-                                                <a href="javascript:void(0);" class="btn btn-sm btn-outline-primary"><i class="icon-eye"></i></a>
+                                                <!-- <a href="javascript:void(0);" class="btn btn-sm btn-outline-primary"><i class="icon-eye"></i></a> -->
                                                 <a href="javascript:void(0);" data-toggle="modal" data-target="#editModal{{$appOrder->id}}" class="btn btn-sm btn-outline-success"><i class="icon-pencil"></i></a>
                                                 <a href="javascript:void(0);" data-toggle="modal" data-target="#deleteModal{{$appOrder->id}}" class="btn btn-sm btn-outline-danger" ><i class="icon-trash"></i></a>
                                             </td>
@@ -146,8 +155,6 @@
                @csrf
                @method('DELETE')
                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-               <!-- <input type="hidden" name="transfer_money_firm" value="1" /> -->
-
                <div class="modal-footer">
                    <button type="submit" class="btn btn-primary">نعم</button>
                    <a href="#" class="btn btn-secondary" data-dismiss="modal">الغاء الأمر</a>
@@ -175,14 +182,14 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <input type="text" class="form-control" value="{{$appOrder->app_id}}" required placeholder="اسم التطبيق" name="app_id" aria-label="app_id" aria-describedby="basic-addon2">
+                        <input type="number" class="form-control" value="{{$appOrder->app_name}}" required placeholder="اسم التطبيق"  aria-label="app_id" aria-describedby="basic-addon2" readonly>
                     </div>
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                         </div>
-                        <input type="text" class="form-control" value="{{$appOrder->user_id}}" required placeholder="اسم المستخدم" name="user_id" aria-label="user_id" aria-describedby="basic-addon2">
+                        <input type="number" class="form-control" value="{{$appOrder->user_name}}" required placeholder="اسم المستخدم"  aria-label="user_id" aria-describedby="basic-addon2" readonly>
                     </div>
 
                     <div class="input-group mb-3">
@@ -210,8 +217,6 @@
                         <textarea class="form-control" name="note" placeholder="الوصف" >{{$appOrder->note}} </textarea>
                     </div>
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                    <!-- <input type="hidden" name="transfer_money_firm" value="1" /> -->
-
                     <div class="modal-footer"> 
                         <button type="submit" class="btn btn-primary">حفظ</button>
                         <a href="#" class="btn btn-secondary" data-dismiss="modal">الغاء الأمر</a>

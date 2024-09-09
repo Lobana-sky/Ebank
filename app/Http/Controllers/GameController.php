@@ -16,10 +16,6 @@ class GameController extends Controller
         return view('backend.game.games.index', compact('games','gameSections'));
     }
 
-    public function create()
-    {
-    }
-
     public function store(Request $request)
     {
         $input = $request->all();
@@ -38,14 +34,6 @@ class GameController extends Controller
         }
         Game::create($input);
         return back()->with('message', 'تمت الاضافة بنجاح');
-    }
-
-    public function show(string $id)
-    {
-    }
-
-    public function edit(string $id)
-    {
     }
 
     public function update(Request $request, string $id)

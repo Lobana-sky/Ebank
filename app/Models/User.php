@@ -85,7 +85,7 @@ class User extends Authenticatable
 
     public function apps(): BelongsToMany
     {
-        return $this->belongsToMany(App::class, 'app_orders');
+        return $this->belongsToMany(App::class, 'app_orders', 'app_id', 'user_id');
     }
     
     public function cards(): BelongsToMany
