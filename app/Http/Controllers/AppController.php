@@ -12,7 +12,6 @@ class AppController extends Controller
     public function index()
     {
        $apps=DB::table('apps')->select('*')->orderBy('id', 'desc')->paginate(500);
-       
        $appSections=DB::table('app_sections')->select('*')->orderBy('id', 'desc')->paginate(500);
        return view('backend.app.apps.index', compact('apps','appSections'));
     }
