@@ -96,7 +96,7 @@ cd MultiFunctionStore/
 
 -   git commit -m "clean code"
 git add .
-git commit -m "fix route"
+git commit -m "install passport"
 git push
 
 
