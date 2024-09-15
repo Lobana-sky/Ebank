@@ -15,6 +15,7 @@ class EbankController extends Controller
         $ebankSections=DB::table('ebank_sections')->select('*')->orderBy('id', 'desc')->paginate(500);
         return view('backend.ebank.ebanks.index', compact('ebanks','ebankSections'));
     }
+
     public function showCategory($id)
     {
         $ebanks=DB::table('ebanks')->select('*')->where('section_id',$id)->orderBy('id', 'desc')->paginate(500);
@@ -22,6 +23,7 @@ class EbankController extends Controller
         $ebankSections=DB::table('ebank_sections')->select('*')->orderBy('id', 'desc')->paginate(500);
         return view('backend.ebank.ebanks.index',compact('ebanks','ebankSections'));
     }
+    
     public function store(Request $request)
     {
         $input = $request->all();

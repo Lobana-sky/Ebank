@@ -16,10 +16,6 @@ class TransferMoneyFirmController extends Controller
         return view('backend.transferMoneyFirm.transferMoneyFirms.index', compact('transferMoneyFirms'));
     }
 
-    public function create()
-    {
-    }
-
     public function store(Request $request)
     {
         $input = $request->all();
@@ -38,14 +34,6 @@ class TransferMoneyFirmController extends Controller
         }
         TransferMoneyFirm::create($input);
         return back()->with('message', 'تمت الاضافة بنجاح');
-    }
-
-    public function show( $id)
-    {
-    }
-
-    public function edit( $id)
-    { 
     }
 
     public function update(Request $request,  $id)
