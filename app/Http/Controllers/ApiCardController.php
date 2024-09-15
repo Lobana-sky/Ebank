@@ -10,6 +10,7 @@ class ApiCardController extends Controller
     public function index()
     { 
         $cards=DB::table('cards')->select('*')->orderBy('id', 'desc')->paginate(500);
-        return response()->json(['cards',$cards]);
+        return response()->json(['cards'=>$cards]);
+
     }
 }
