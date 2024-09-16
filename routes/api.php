@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApiAllServicesTotalController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApiAppController;
@@ -17,3 +18,4 @@ Route::get('card', [ApiCardController::class, 'index']);
 Route::get('ecard', [ApiEcardController::class, 'index']);
 Route::get('transfer-money-firm', [ApiTransferMoneyFirmController::class, 'index']);
 Route::get('program', [ApiProgramController::class, 'index']);
+Route::get('totalRecords',[ApiAllServicesTotalController::class, 'index']);
