@@ -25,7 +25,7 @@ class AppSection extends Model
     
     public function apps(): HasMany
     {
-        return $this->hasMany(App::class);
+        return $this->hasMany(App::class, 'section_id');
     }
  
 }

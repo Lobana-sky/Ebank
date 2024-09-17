@@ -24,7 +24,7 @@ class EbankSection extends Model
 
     public function ebanks(): HasMany
     {
-        return $this->hasMany(Ebank::class);
+        return $this->hasMany(Ebank::class, 'section_id');
     }
     
 }

@@ -26,7 +26,7 @@ class Ebank extends Model
     
     public function ebankSection(): BelongsTo
     {
-        return $this->belongsTo(ebankSection::class);
+        return $this->belongsTo(ebankSection::class, 'section_id');
     }
     
 }

@@ -33,7 +33,7 @@ class App extends Model
     
     public function appSection(): BelongsTo
     {
-        return $this->belongsTo(AppSection::class);
+        return $this->belongsTo(AppSection::class, 'section_id');
     }
 
 }
