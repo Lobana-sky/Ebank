@@ -17,7 +17,7 @@ class ApiEbankSectionController extends Controller
     public function getApps(string $section_id)
     {
        $section = EbankSection::find($section_id);
-       $ebanks = $section->apps;
+       $ebanks = $section->ebanks;
        return response()->json(['ebanks'=> $ebanks ]);
     }
 }

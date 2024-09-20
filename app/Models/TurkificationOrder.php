@@ -10,12 +10,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class TurkificationOrder extends Model
 {
     use HasFactory, Notifiable;
-    
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
         'user_id',
         'ime',

@@ -10,11 +10,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class EbankSection extends Model
 {
     use HasFactory;
-       /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
   
      protected $fillable = [
         'name',

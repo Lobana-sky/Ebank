@@ -9,12 +9,6 @@ class GameSection extends Model
 {
     use HasFactory;
     
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-  
     protected $fillable = [
         'name',
         'image',
@@ -23,6 +17,6 @@ class GameSection extends Model
 
     public function games(): HasMany
     {
-        return $this->hasMany(Game::class);
+        return $this->hasMany(Game::class, 'section_id');
     }
 }

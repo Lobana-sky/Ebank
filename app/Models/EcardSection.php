@@ -19,6 +19,6 @@ class EcardSection extends Model
     
     public function ecards(): HasMany
     {
-        return $this->hasMany(Ecard::class);
+        return $this->hasMany(Ecard::class, 'section_id');
     }
 }

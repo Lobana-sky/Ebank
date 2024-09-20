@@ -26,6 +26,6 @@ class Game extends Model
     
     public function gameSection(): BelongsTo
     {
-        return $this->belongsTo(GameSection::class);
+        return $this->belongsTo(GameSection::class, 'section_id');
     }
 }

@@ -13,11 +13,6 @@ class Vip extends Model
 {
     use HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
         'commession_percent',
         'role_name',

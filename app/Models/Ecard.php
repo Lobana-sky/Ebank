@@ -26,6 +26,6 @@ class Ecard extends Model
 
     public function ecardSection(): BelongsTo
     {
-        return $this->belongsTo(EcardSection::class);
+        return $this->belongsTo(EcardSection::class, 'section_id');
     }
 }

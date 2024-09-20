@@ -10,12 +10,6 @@ class TransferMoneyFirm extends Model
 {
     use HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    // protected $table = 'transferMoneyFirm';
     protected $fillable = [
         'name',
         'iban',

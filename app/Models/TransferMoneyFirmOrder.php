@@ -10,11 +10,6 @@ class TransferMoneyFirmOrder extends Model
 {
     use HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
         'transfer_money_firm_id',
         'user_id',
