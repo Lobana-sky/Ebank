@@ -73,36 +73,18 @@ composer create-project laravel/laravel MultiFunctionStore
 cd MultiFunctionStore/
 
 -   php artisan make:model App
--   php artisan make:model AppOrder
--   php artisan make:model Vip
--   php artisan make:model Turkification
--   php artisan make:model TransferMoneyFirm
--   php artisan make:model TransferMoneyFirmOrder
--   php artisan make:migration create_transfer_money_firm_orders_table --create=transfer_money_firm_orders
--   php artisan make:migration create_transfer_money_firms_table --create=transfer_money_firms
 -   php artisan make:migration create_apps_table --create=apps
--   php artisan make:migration create_app_orders_table --create=app_orders
--   php artisan make:migration create_vips_table --create=vips
--   php artisan make:migration create_turkifications_table --create=turkifications
-
--   php artisan make:controller UserController --resource
 -   php artisan make:controller AppController --resource
--   php artisan make:controller AppOrderController --resource
--   php artisan make:controller VipController --resource
--   php artisan make:controller TurkificationController --resource
--   php artisan make:controller TransferMoneyFirmController --resource
--   php artisan make:controller TransferMoneyFirmOrderController --resource
 
 
--   git commit -m "clean code"
 git add .
-git commit -m "install passport"
+git commit -m "fix section id"
 git push
 
 
 -   composer dump-autoload
 -   php artisan config:cache
--   php artisan route:cache
+-   php artisan route:cache 
 -   Php artisan route:list
 -   php artisan migrate:fresh
 -   php artisan serve
