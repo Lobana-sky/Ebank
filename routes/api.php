@@ -5,7 +5,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApiAppController;
 use App\Http\Controllers\ApiAppSectionController;
-use App\Http\Controllers\ApiCardSectionController;
 use App\Http\Controllers\ApiEbankSectionController;
 use App\Http\Controllers\ApiCardController;
 use App\Http\Controllers\ApiDataCommunicationController;
@@ -22,10 +21,27 @@ use App\Http\Controllers\ApiEcardSectionController;
 // Route::get('card', [ApiCardController::class, 'index']);
 // Route::get('ecard', [ApiEcardController::class, 'index']);
 // Route::get('transfer-money-firm', [ApiTransferMoneyFirmController::class, 'index']);
+Route::post('register',[ApiUserController::class, 'store']);
+Route::post('login',[ApiUserController::class, 'login']);
+
+
+
+
+Route::get('totalRecords',[ApiAllServicesTotalController::class, 'index']);
+
+
 Route::get('programs', [ApiProgramController::class, 'index']);
 Route::get('program/{id}', [ApiProgramController::class, 'show']);
 
-Route::get('totalRecords',[ApiAllServicesTotalController::class, 'index']);
+Route::get('transfer-money-firms', [ApiTransferMoneyFirmController::class, 'index']);
+Route::get('transfer-money-firm/{id}', [ApiTransferMoneyFirmController::class, 'show']);
+
+Route::get('cards', [ApiCardController::class, 'index']);
+Route::get('card/{id}', [ApiCardController::class, 'show']);
+
+Route::get('data-communications', [ApiDataCommunicationController::class, 'index']);
+Route::get('data-communication/{id}', [ApiDataCommunicationController::class, 'show']);
+
 
 Route::get('app-sections',[ApiAppSectionController::class, 'index']);
 Route::get('app-sections/{id}',[ApiAppSectionController::class, 'getApps']);
@@ -38,7 +54,3 @@ Route::get('ebank/{id}',[ApiEbankController::class, 'show']);
 Route::get('ecard-sections',[ApiEcardSectionController::class, 'index']);
 Route::get('ecard-sections/{id}',[ApiEcardSectionController::class, 'getEcards']);
 Route::get('ecard/{id}',[ApiEcardController::class, 'show']);
-
-Route::post('register',[ApiUserController::class, 'store']);
-
-// php artisan route:cache

@@ -12,7 +12,7 @@ class ApiAppSectionController extends Controller
     public function index()
     {
        $appSections=DB::table('app_sections')->select('*')->orderBy('id', 'desc')->paginate(500);
-       return response()->json(['app_sections'=> $appSections ]);
+       return response()->json(['appSections'=> $appSections ]);
     }
 
     public function getApps(string $section_id)

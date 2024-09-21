@@ -11,7 +11,7 @@ class ApiEbankSectionController extends Controller
     public function index()
     {
        $ebankSections=DB::table('ebank_sections')->select('*')->orderBy('id', 'desc')->paginate(500);
-       return response()->json(['ebank_sections'=> $ebankSections ]);
+       return response()->json(['ebankSections'=> $ebankSections ]);
     }
 
     public function getEbanks(string $section_id)

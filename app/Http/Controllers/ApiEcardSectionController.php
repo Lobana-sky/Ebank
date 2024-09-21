@@ -11,7 +11,7 @@ class ApiEcardSectionController extends Controller
     public function index()
     {
        $ecardSections=DB::table('ecard_sections')->select('*')->orderBy('id', 'desc')->paginate(500);
-       return response()->json(['ecard_sections'=> $ecardSections ]);
+       return response()->json(['ecardSections'=> $ecardSections ]);
     }
 
     public function getEcards(string $section_id)
