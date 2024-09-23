@@ -14,6 +14,8 @@ use App\Http\Controllers\ApiProgramController;
 use App\Http\Controllers\ApiTransferMoneyFirmController;
 use App\Http\Controllers\ApiUserController;
 use App\Http\Controllers\ApiEcardSectionController;
+use App\Http\Controllers\ApiGameController;
+use App\Http\Controllers\ApiGameSectionController;
 
 // Route::get('app',[ApiAppController::class, 'index']);
 // Route::get('data-communication',[ApiDataCommunicationController::class, 'index']);
@@ -23,6 +25,7 @@ use App\Http\Controllers\ApiEcardSectionController;
 // Route::get('transfer-money-firm', [ApiTransferMoneyFirmController::class, 'index']);
 Route::post('register',[ApiUserController::class, 'store']);
 Route::post('login',[ApiUserController::class, 'login']);
+Route::middleware('auth:api')->get('myuser',[ApiUserController::class, 'show']);
 
 
 
@@ -54,3 +57,7 @@ Route::get('ebank/{id}',[ApiEbankController::class, 'show']);
 Route::get('ecard-sections',[ApiEcardSectionController::class, 'index']);
 Route::get('ecard-sections/{id}',[ApiEcardSectionController::class, 'getEcards']);
 Route::get('ecard/{id}',[ApiEcardController::class, 'show']);
+
+Route::get('game-sections',[ApiGameSectionController::class, 'index']);
+Route::get('game-sections/{id}',[ApiGameSectionController::class, 'getGames']);
+Route::get('game/{id}',[ApiGameController::class, 'show']);

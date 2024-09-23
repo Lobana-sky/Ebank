@@ -78,7 +78,7 @@ cd MultiFunctionStore/
 
 
 git add .
-git commit -m "fix section id"
+git commit -m "so paes done"
 git push
 
 
