@@ -36,16 +36,14 @@ class ApiUserController extends Controller
         $credentials=$request->validate([
             'email'=>'required',
             'password'=>'required',
-
         ]);
+        
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
-       
             $token=$user->createToken('auth_token')->token;
-         
             return response()->json(['token' => $token,'user'=>$user]);
         }
-        else{
+        else {
             return response()->json(['message'=>'المستخدم غير موجود']);
         }
         
@@ -53,7 +51,7 @@ class ApiUserController extends Controller
 
     public function show(Request $request)
     {  
-       dd(Auth::user());
+      dd(Auth::user());
       return response()->json(['user'=>Auth::user()]);
     }
 

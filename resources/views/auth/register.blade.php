@@ -21,11 +21,9 @@
 @import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@400..700&display=swap');
 body.font-nunito {
     font-family: "El Messiri", sans-serif;
+}
 
-
-    }
-
-    </style>
+</style>
 </head>
 
 <body data-theme="light" class="font-nunito">
@@ -34,11 +32,11 @@ body.font-nunito {
 		<div class="vertical-align-wrap">
 			<div class="vertical-align-middle auth-main">
 				<div class="auth-box">
-                    <div class="top">
-                        <!-- <img src="assets/images/logo-white.svg" alt="Iconic"> -->
-                        <img src="assets/images/{{session('logo')}}" alt="Iconic">
-                    </div>
-					<div class="card" style="direction:rtl">
+            <div class="top">
+                <!-- <img src="assets/images/logo-white.svg" alt="Iconic"> -->
+                <img src="assets/images/{{session('logo')}}" alt="Iconic">
+            </div>
+					  <div class="card" style="direction:rtl">
                      <div class="header">
                         <div class="card-header" style="text-align:right">{{ __('تسجيل جديد') }}
                          </div>
@@ -119,7 +117,7 @@ body.font-nunito {
                                     <span class="input-group-text"><i class="fa fa-edit"> </i></span>
                                 </div>
                                 <select name="nationality" class="custom-select" id="state" required="">
-                                         <option value=""> اختر البلد  </option>
+                                         <option value=""> اختر البلد</option>
                                           <option value="AFGHANISTAN">
                                             AFGHANISTAN
                                           </option>
@@ -826,7 +824,7 @@ body.font-nunito {
                                   <div class="input-group-prepend">
                                       <input type="text" class="form-control" required style="direction:ltr" placeholder=" 538 9899 096" aria-label=" رقم الهاتف"name="mobile" describedby="basic-addon1">
                                   </div>                    
-                                  <select  class="custom-select" required  name="code" >
+                            <select  class="custom-select" required  name="code" >
                             
                                <option value="">اختر البلد   </option>
                                <option value="+93">
@@ -1517,7 +1515,6 @@ body.font-nunito {
                              </div>
                                
                            </div>
-                            
                           <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                            
                          <div class="modal-footer">  

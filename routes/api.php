@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\ApiAllServicesTotalController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ApiAllServicesTotalController;
 use App\Http\Controllers\ApiAppController;
 use App\Http\Controllers\ApiAppSectionController;
 use App\Http\Controllers\ApiEbankSectionController;
@@ -17,12 +17,6 @@ use App\Http\Controllers\ApiEcardSectionController;
 use App\Http\Controllers\ApiGameController;
 use App\Http\Controllers\ApiGameSectionController;
 
-// Route::get('app',[ApiAppController::class, 'index']);
-// Route::get('data-communication',[ApiDataCommunicationController::class, 'index']);
-// Route::get('ebank', [ApiEbankController::class, 'index']);
-// Route::get('card', [ApiCardController::class, 'index']);
-// Route::get('ecard', [ApiEcardController::class, 'index']);
-// Route::get('transfer-money-firm', [ApiTransferMoneyFirmController::class, 'index']);
 Route::post('register',[ApiUserController::class, 'store']);
 Route::post('login',[ApiUserController::class, 'login']);
 Route::middleware('auth:api')->get('myuser',[ApiUserController::class, 'show']);

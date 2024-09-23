@@ -215,8 +215,11 @@
                         </li>
                     </ul>
 
-                    <a href="#" target="_blank" class="btn btn-block btn-primary"><i class="icon-power"></i>الخروج</a>
-                    <a href="https://themeforest.net/user/wrraptheme/portfolio" target="_blank" class="btn btn-block btn-secondary">View portfolio</a>
+                    <a href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();"  class="btn btn-block btn-primary"><i class="icon-power"></i>تسجيل الخروج
+                            </a>
+                    <a href="/profile" class="btn btn-block btn-secondary">View portfolio</a>
                 </div>
 
 
