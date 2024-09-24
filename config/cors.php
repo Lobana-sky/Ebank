@@ -23,7 +23,7 @@ return [
 
     // Specifies which origins are allowed to access the resources.
     // You can add multiple origins here or use '*' to allow all origins.
-    'allowed_origins' => ['http://localhost:3000'],
+    'allowed_origins' => ['*'],
 
     // Patterns that match origins to be allowed. Use this if you need more flexible control over the origin.
     'allowed_origins_patterns' => [],

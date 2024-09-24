@@ -13,24 +13,18 @@ class ApiUserController extends Controller
     public function getAgents($id)
     { 
         $agents=DB::table('users')->select('*')->where('agent_id', $id)->get();
-    
         return response()->json(['agents'=>$agents]);  
     }
 
     public function store(Request $request)
     {   
        $input = $request->all();
-
-       $input['mobile']= $input['code']. $input['mobile'];
-
-       $input['password']=bcrypt($input['password']);
-        
+       $input['mobile'] = $input['code'] . $input['mobile'];
+       $input['password'] = bcrypt($input['password']);
        User::create($input);
-
        return response()->json(['message'=>'تمت إضافة المستخدم بنجاح ']);
-  
-         
     }
+
     public function login(Request $request)
     {   
         $credentials=$request->validate([
@@ -40,14 +34,46 @@ class ApiUserController extends Controller
         
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
-            $token=$user->createToken('auth_token')->token;
+            $token = $user->createToken('auth_token')->accessToken;
+
+            // $token = $user->createToken('auth_token')->token;
             return response()->json(['token' => $token,'user'=>$user]);
         }
         else {
             return response()->json(['message'=>'المستخدم غير موجود']);
         }
-        
     }
+
+    // public function login(Request $request) 
+    // {
+    //     // Validate the incoming request
+    //     $credentials = $request->validate([
+    //         'email' => 'required|email',
+    //         'password' => 'required|min:8',
+    //     ]);
+
+    //     // Attempt to authenticate the user
+    //     // if (Auth::attempt($credentials)) {
+    //         if (! $token = Auth::attempt($credentials)){
+    //         // Get the authenticated user
+    //         $user = Auth::user();
+    //         // dd($user);
+    //         // Create a new token for the user
+    //         $token = $user->createToken('auth_token')->plainTextToken;
+
+    //         // Return a JSON response with the token and user information
+    //         return response()->json([
+    //             'token' => $token,
+    //             'user' => $user,
+    //         ], 200);
+    //     } else {
+    //         // Return a failure response with an appropriate message
+    //         return response()->json([
+    //             'message' => 'Invalid credentials',
+    //         ], 401);
+    //     }
+    // }
+
 
     public function show(Request $request)
     {  
