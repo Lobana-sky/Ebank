@@ -19,15 +19,12 @@ use App\Http\Controllers\ApiGameSectionController;
 
 Route::post('register',[ApiUserController::class, 'store']);
 Route::post('login',[ApiUserController::class, 'login']);
-Route::middleware('auth:api')->get('myuser',[ApiUserController::class, 'show']);
+
 
 Route::middleware('auth:api')->group(function () {
-    Route::get('totalRecords',[ApiAllServicesTotalController::class, 'index']); // Example route to get all apps
-    // Add more protected routes here
+    Route::get('totalRecords',[ApiAllServicesTotalController::class, 'index']);
+    Route::get('user', [ApiUserController::class, 'getUser']);
 });
-
-
-// Route::get('totalRecords',[ApiAllServicesTotalController::class, 'index']);
 
 
 Route::get('programs', [ApiProgramController::class, 'index']);

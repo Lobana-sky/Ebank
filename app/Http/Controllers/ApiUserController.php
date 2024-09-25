@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Laravel\Passport\HasApiTokens;
@@ -27,9 +26,9 @@ class ApiUserController extends Controller
 
     public function login(Request $request)
     {   
-        $credentials=$request->validate([
-            'email'=>'required',
-            'password'=>'required',
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|min:8',
         ]);
         
         if (Auth::attempt($credentials)) {
@@ -37,48 +36,17 @@ class ApiUserController extends Controller
             $token = $user->createToken('auth_token')->accessToken;
 
             // $token = $user->createToken('auth_token')->token;
-            return response()->json(['token' => $token,'user'=>$user]);
+            return response()->json(['token' => $token,'user'=>$user], 200);
         }
-        else {
-            return response()->json(['message'=>'المستخدم غير موجود']);
+        else
+        {
+            return response()->json(['message'=>'المستخدم غير موجود'], 401);
         }
     }
 
-    // public function login(Request $request) 
-    // {
-    //     // Validate the incoming request
-    //     $credentials = $request->validate([
-    //         'email' => 'required|email',
-    //         'password' => 'required|min:8',
-    //     ]);
-
-    //     // Attempt to authenticate the user
-    //     // if (Auth::attempt($credentials)) {
-    //         if (! $token = Auth::attempt($credentials)){
-    //         // Get the authenticated user
-    //         $user = Auth::user();
-    //         // dd($user);
-    //         // Create a new token for the user
-    //         $token = $user->createToken('auth_token')->plainTextToken;
-
-    //         // Return a JSON response with the token and user information
-    //         return response()->json([
-    //             'token' => $token,
-    //             'user' => $user,
-    //         ], 200);
-    //     } else {
-    //         // Return a failure response with an appropriate message
-    //         return response()->json([
-    //             'message' => 'Invalid credentials',
-    //         ], 401);
-    //     }
-    // }
-
-
-    public function show(Request $request)
-    {  
-      dd(Auth::user());
-      return response()->json(['user'=>Auth::user()]);
+    public function getUser()
+    {
+        return response()->json(Auth::user());
     }
 
     public function update(Request $request,  $id)
@@ -109,5 +77,4 @@ class ApiUserController extends Controller
             return response()->json(['message'=>'حدث خطا أثناء محاولة تعديل المعلومات']);
         }
     }
-
 }
