@@ -44,7 +44,7 @@ class ApiUserController extends Controller
         }
     }
 
-    public function getUser()
+    public function getLoggedInUser()
     {
         return response()->json(Auth::user());
     }
@@ -54,27 +54,29 @@ class ApiUserController extends Controller
         try {
             $user = User::findOrFail($id);
             $input = $request->all();
-        if($request->file('image')!="")
-        {
-      
-            if ($file = $request->file('image')) {
-                $name = 'user_'.time().$file->getClientOriginalName();
-                $file->move('images/users/', $name);
-                $input['image'] = $name;
+            if($request->file('image')!="")
+            {
+                if ($file = $request->file('image')) {
+                    $name = 'user_'.time().$file->getClientOriginalName();
+                    $file->move('images/users/', $name);
+                    $input['image'] = $name;
+                }
             }
+            else
+            {
+                $input['image'] =$user['image'];
+            }
+            $input['password'] = bcrypt($input['password']);
+            $user->update($input);
+            return response()->json([
+            'message' => 'User updated successfully',
+            'user' => $user
+            ]);
         }
-        else
-        {
-            $input['image'] =$user['image'];
-        }
-        $input['password'] = bcrypt($input['password']);
-        $user->update($input);
-        
-        return back()->with('message', 'تم التعديل بنجاح');
-        }
-        catch(\Exception $e ) 
+         catch(\Exception $e) 
         {
             return response()->json(['message'=>'حدث خطا أثناء محاولة تعديل المعلومات']);
+
         }
     }
 }

@@ -23,7 +23,8 @@ Route::post('login',[ApiUserController::class, 'login']);
 
 Route::middleware('auth:api')->group(function () {
     Route::get('totalRecords',[ApiAllServicesTotalController::class, 'index']);
-    Route::get('user', [ApiUserController::class, 'getUser']);
+    Route::get('logged-in-user', [ApiUserController::class, 'getLoggedInUser']);
+    Route::patch('users/{id}', [ApiUserController::class, 'update']);
 });
 
 
