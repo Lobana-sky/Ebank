@@ -16,10 +16,14 @@ use App\Http\Controllers\ApiUserController;
 use App\Http\Controllers\ApiEcardSectionController;
 use App\Http\Controllers\ApiGameController;
 use App\Http\Controllers\ApiGameSectionController;
+use App\Http\Controllers\ApiSettingController;
+use App\Http\Controllers\ApiSliderController;
 
 Route::post('register',[ApiUserController::class, 'store']);
 Route::post('login',[ApiUserController::class, 'login']);
 
+Route::get('slider', [ApiSliderController::class, 'index']);
+Route::get('about-us', [ApiSettingController::class, 'index']);
 
 Route::middleware('auth:api')->group(function () {
     Route::get('totalRecords',[ApiAllServicesTotalController::class, 'index']);
