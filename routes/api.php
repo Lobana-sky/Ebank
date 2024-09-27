@@ -23,10 +23,10 @@ Route::post('register',[ApiUserController::class, 'store']);
 Route::post('login',[ApiUserController::class, 'login']);
 
 Route::get('slider', [ApiSliderController::class, 'index']);
+Route::get('totalRecords',[ApiAllServicesTotalController::class, 'index']);
 Route::get('about-us', [ApiSettingController::class, 'index']);
 
 Route::middleware('auth:api')->group(function () {
-    Route::get('totalRecords',[ApiAllServicesTotalController::class, 'index']);
     Route::get('logged-in-user', [ApiUserController::class, 'getLoggedInUser']);
     Route::patch('users/{id}', [ApiUserController::class, 'update']);
 });

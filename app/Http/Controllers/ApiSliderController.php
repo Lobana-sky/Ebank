@@ -9,7 +9,7 @@ class ApiSliderController extends Controller
 {
     public function index()
     {
-        $sliders=DB::table('sliders')->select('*')->orderBy('id', 'desc')->paginate(500);
-        return response()->json(['sliders'=>$sliders]);
+        $slider=DB::table('sliders')->select('*')->orderBy('id', 'desc')->paginate(500);
+        return response()->json(['slider'=>$slider]);
     }
 }

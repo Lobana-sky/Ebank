@@ -125,6 +125,9 @@
                             <li>
                                 <a href="/setting" class=""><i class="fa fa-dashboard"></i><span>الاعدادات</span></a>
                             </li>
+                            <li>
+                                <a href="/slider" class=""><i class="fa fa-dashboard"></i><span>إعداد الشرائح في الصفحة الرئيسية</span></a>
+                            </li>
                         </ul>
                     </nav>
                 </div>

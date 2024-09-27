@@ -10,6 +10,6 @@ class ApiSettingController extends Controller
     public function index()
     {
         $setting=DB::table('settings')->select('*')->orderBy('id', 'desc')->first();
-        return response()->json(['settings'=>$setting]);
+        return response()->json(['setting'=>$setting]);
     }
 }
